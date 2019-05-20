@@ -2,25 +2,29 @@
 #define TINYTENSOR_LAYER_HPP
 
 #include "tensor.hpp"
+#include <string>
+
+using namespace std;
+
 //Factory Method
 
 class Layer{
 private:
-    String name; //layer name for debug
+    string name; //layer name for debug
 
     virtual Tensor calculate(Tensor & input)=0;
 
 public:
-    String getName() {
+    string getName() {
         return name;
       }
 
-    void setName(String name) {
-        this.name = name;
+    void setName(string name) {
+        this->name = name;
       }
 };
 
-class Conv::Layer{
+class Conv:Layer{
     int _input;
     int _output;
     int _kernel_size;
@@ -30,8 +34,8 @@ class Conv::Layer{
 
     Tensor Kernel;
 
-    Conv(int input_channels, int output_channels,int kernel_size, int stride=1,
-            int padding=0, double bias);
+    Conv(int input_channels, int output_channels,int kernel_size, double bias
+            , int stride=1, int padding=0);
 };
 
 class MaxPool2d:Layer{
@@ -39,10 +43,10 @@ class MaxPool2d:Layer{
     int _stride;
     int _padding;
 
-    void MaxPool2d(int kernel_size,int stride=0,int padding=0);
+    MaxPool2d(int kernel_size,int stride=0,int padding=0);
 };
 
-class Linear::Layer{
+class Linear:Layer{
     int _inputl;
     int _output;
     double _bias;
@@ -51,24 +55,24 @@ class Linear::Layer{
 
     Linear(int input_features, int output_features, double bias);
 };
-class Relu::layer{
+class Relu:Layer{
     Relu();
 };
  //optional
-class Sigmoid::layer{
+class Sigmoid:Layer{
     Sigmoid();
 };
 //optional
-class Tanh::layer{
+class Tanh:Layer{
     Tanh();
 };
 
-class Softmax::layer{
+class Softmax:Layer{
     Softmax();
 };
 
 //need to comfirm
-class LogSoftmax::layer{
+class LogSoftmax:Layer{
     LogSoftmax();
 };
 

@@ -29,6 +29,8 @@ public:
     double ***kernel;
     //compile error wth?
     //vector<vector<vector<double> > > kernel (nx, vector<vector<double> >(ny, vector<double>(nz)));
+
+    int max_tensor_index(); //return the max element in the tensor
 };
 
 

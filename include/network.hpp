@@ -7,18 +7,19 @@
 using namespace std;
 
 class Network{
+public:
     Network();
 
-    Network(vector<layer*> & ls);
+    Network(vector<Layer*> & ls);
 
-    void add_layer(layer & l){
+    void add_layer(Layer & l){
       layers.push_back(&l);
     }
 
-    Tensor run(Tensor & input); //run the network, iteratively use calculate function in the layer
+    Tensor eval(Tensor & input); //run the network, iteratively use calculate function in the layer
 
 private:
-    vector<layer*> layers;
+    vector<Layer*> layers;
 };
 
 
