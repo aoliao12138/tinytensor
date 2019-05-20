@@ -9,7 +9,7 @@ set(CMAKE_BUILD_TYPE Debug)
 ## Major project
 INCLUDE_DIRECTORIES(include)
 
-set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp)
+set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp src/dataloader.cpp)
 
 add_library( tinytensor_lib ${TINYTENSOR_SRC} )
 
