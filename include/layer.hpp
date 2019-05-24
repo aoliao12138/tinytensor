@@ -19,6 +19,7 @@ class Configure{
 };
 
 class ConvConfigure: Configure{
+public:
     int _input;
     int _output;
     int _kernel_size;
@@ -26,25 +27,24 @@ class ConvConfigure: Configure{
     int _padding;
     double _bias;
 
-public:
-    ConvConfigure(int input_channels, int output_channels,int kernel_size, double bias
+    ConvConfigure(int input_channels, int output_channels,int kernel_size, double bias=0
             , int stride=1, int padding=0);
 };
 
 class PoolConfigure: Configure{
+public:
     int _kernel_size;
     int _stride;
     int _padding;
-public:
-    PoolConfigure(int kernel_size,int stride=0,int padding=0);
+    PoolConfigure(int kernel_size,int stride=2,int padding=0);
 };
 
 class LinearConfigure: Configure{
+public:
     int _input;
     int _output;
     double _bias;
-public:
-    LinearConfigure(int input_features, int output_features, double bias);
+    LinearConfigure(int input_features, int output_features, double bias=0);
 };
 
 //Factory Method
@@ -52,8 +52,6 @@ public:
 class Layer{
 private:
     string name; //layer name for debug
-
-    virtual Tensor calculate(Tensor & input)=0;
 
 public:
     string getName() {
@@ -67,14 +65,18 @@ public:
     Layer * creator(int mode, Configure *c );
 
     Layer * creator(int mode, Configure &c, Tensor &t);
+
+    virtual Tensor calculate(Tensor & input)=0;
 };
 
 class Conv: Layer{
     ConvConfigure _confi;
 
-    Tensor kernel;
+    vector<Tensor> kernel;
 public:
     Conv(ConvConfigure *confi);
+
+    Tensor calculate(Tensor & input);
 };
 
 class MaxPool2d: Layer{
@@ -82,6 +84,8 @@ class MaxPool2d: Layer{
 
 public:
     MaxPool2d(PoolConfigure *confi);
+
+    Tensor calculate(Tensor & input);
 };
 
 class Linear: Layer{
@@ -89,32 +93,44 @@ class Linear: Layer{
 
     Tensor weights;
 public:
-    Linear(LinearConfigure &confi);
+    Linear(LinearConfigure *confi);
+
+    Tensor calculate(Tensor & input);
 };
 class Relu: Layer{
 public:
     Relu();
+
+    Tensor calculate(Tensor & input);
 };
  //optional
 class Sigmoid: Layer{
 public:
     Sigmoid();
+
+    Tensor calculate(Tensor & input);
 };
 //optional
 class Tanh: Layer{
 public:
     Tanh();
+
+    Tensor calculate(Tensor & input);
 };
 
 class Softmax: Layer{
 public:
     Softmax();
+
+    Tensor calculate(Tensor & input);
 };
 
 //need to comfirm
 class LogSoftmax: Layer{
 public:
     LogSoftmax();
+
+    Tensor calculate(Tensor & input);
 };
 
 
