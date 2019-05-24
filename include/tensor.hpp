@@ -26,10 +26,10 @@ public:
       return nz;
     }
 
-    double ***kernel;
-    //compile error wth?
-    //vector<vector<vector<double> > > kernel (nx, vector<vector<double> >(ny, vector<double>(nz)));
+    //double ***kernel;
 
+    //vector<vector<vector<double> > > kernel (nx, vector<vector<double> >(ny, vector<double>(nz)));
+    vector<vector<vector<double> > > kernel;
     int max_tensor_index(); //return the max element in the tensor
 };
 
