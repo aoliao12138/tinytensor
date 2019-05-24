@@ -25,9 +25,9 @@ public:
     int _kernel_size;
     int _stride;
     int _padding;
-    double _bias;
+    vector<double> _bias;
 
-    ConvConfigure(int input_channels, int output_channels,int kernel_size, double bias=0
+    ConvConfigure(int input_channels, int output_channels,int kernel_size, vector<double> bias
             , int stride=1, int padding=0);
 };
 
@@ -43,8 +43,8 @@ class LinearConfigure: Configure{
 public:
     int _input;
     int _output;
-    double _bias;
-    LinearConfigure(int input_features, int output_features, double bias=0);
+    vector<double> _bias;
+    LinearConfigure(int input_features, int output_features, vector<double> bias);
 };
 
 //Factory Method
