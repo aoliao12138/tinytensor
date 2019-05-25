@@ -5,6 +5,7 @@
 #include <vector>
 using namespace std;
 
+//if it is 2 dimenson then nz is 1;
 class Tensor {
     int nx;
     int ny;
