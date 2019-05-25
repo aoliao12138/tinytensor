@@ -2,12 +2,6 @@
 
 using namespace std;
 
-int main(int argc, char const *argv[])
-{
-	/* code */
-	return 0;
-}
-
 vector<vector<vector<double> > > parameters_1 = {{{-0.1326,  0.0732, -0.1769, -0.1543, -0.0854},
           { 0.1191, -0.0214,  0.1902,  0.0048, -0.0986},
           { 0.1710, -0.1778, -0.1700,  0.1797, -0.1636},
