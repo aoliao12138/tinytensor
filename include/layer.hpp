@@ -16,6 +16,8 @@
 using namespace std;
 
 class Configure{
+public:
+    virtual ~Configure()= default;
 };
 
 class ConvConfigure: Configure{
@@ -53,6 +55,7 @@ class Layer{
 private:
     string name; //layer name for debug
 
+
 public:
     string getName() {
         return name;
@@ -69,7 +72,7 @@ public:
     virtual Tensor calculate(Tensor & input)=0;
 };
 
-class Conv: Layer{
+class Conv: public Layer{
     ConvConfigure _confi;
 
     vector<Tensor> kernel;
@@ -79,7 +82,7 @@ public:
     Tensor calculate(Tensor & input);
 };
 
-class MaxPool2d: Layer{
+class MaxPool2d: public Layer{
     PoolConfigure _confi;
 
 public:
@@ -88,7 +91,7 @@ public:
     Tensor calculate(Tensor & input);
 };
 
-class Linear: Layer{
+class Linear: public Layer{
     LinearConfigure _confi;
 
     Tensor weights;
@@ -97,28 +100,28 @@ public:
 
     Tensor calculate(Tensor & input);
 };
-class Relu: Layer{
+class Relu: public Layer{
 public:
     Relu();
 
     Tensor calculate(Tensor & input);
 };
  //optional
-class Sigmoid: Layer{
+class Sigmoid: public Layer{
 public:
     Sigmoid();
 
     Tensor calculate(Tensor & input);
 };
 //optional
-class Tanh: Layer{
+class Tanh: public Layer{
 public:
     Tanh();
 
     Tensor calculate(Tensor & input);
 };
 
-class Softmax: Layer{
+class Softmax: public Layer{
 public:
     Softmax();
 
@@ -126,7 +129,7 @@ public:
 };
 
 //need to comfirm
-class LogSoftmax: Layer{
+class LogSoftmax: public Layer{
 public:
     LogSoftmax();
 

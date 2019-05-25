@@ -14,8 +14,7 @@ class Tensor {
 
 
 public:
-    Tensor(int x, int y, int z);
-    ~Tensor();
+    Tensor(int x=1, int y=1, int z=1);
 
     int get_nx(){
       return nx;
