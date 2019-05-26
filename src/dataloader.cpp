@@ -110,3 +110,4 @@ MNISTData load_test_data(string & test_directory) {
 }
 
 
+
