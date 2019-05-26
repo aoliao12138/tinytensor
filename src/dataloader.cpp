@@ -83,6 +83,10 @@ Tensor MNISTData::operator[] (int index) {
     return result;
 }
 
+int MNISTData::label(int index) {
+    return _labels[index];
+}
+
 MNISTData load_training_data(string & training_directory) {
     string image_location_str = training_directory + "/train-images.idx3-ubyte";
     string label_location_str = training_directory + "/train-labels.idx1-ubyte";

@@ -16,6 +16,7 @@ public:
 	~MNISTData();
 	void show(int index);
 	Tensor operator[] (int index);
+	int label(int index);
 private:
 	std::vector<std::vector<int> > _images;
 	std::vector<int> _labels;
