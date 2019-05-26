@@ -2,6 +2,17 @@
 
 using namespace std;
 
+// paramaters_1: Input -> C1: kernel
+// paramaters_2: Input -> C1: bias
+// paramaters_3: S2 -> C3: kernel
+// paramaters_4: S2 -> C3: bias
+// paramaters_5: S4 -> C5: kernel
+// paramaters_6: S4 -> C5: bias
+// paramaters_7: C5 -> F6: kernel
+// paramaters_8: C5 -> F6: bias
+// paramaters_9: F6 -> OUTPUT: kernel
+// paramaters_10: F6 -> OUTPUT: bias
+
 vector<vector<vector<double> > > parameters_1 = {{{-0.1326,  0.0732, -0.1769, -0.1543, -0.0854},
           { 0.1191, -0.0214,  0.1902,  0.0048, -0.0986},
           { 0.1710, -0.1778, -0.1700,  0.1797, -0.1636},
