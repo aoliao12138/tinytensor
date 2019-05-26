@@ -66,12 +66,12 @@ Tensor Conv::calculate(Tensor &input) {
                     for (int n = 0; n < kernel[i].get_nz(); ++n) {
                         for (int l = 0; l < kernel[i].get_ny(); ++l) {
                             for (int m = 0; m < kernel[i].get_nx(); ++m) {
-                                tmp += kernel[i].kernel[n][l][m] *
-                                       input.kernel[n][l + j * _confi._stride][m + k * _confi._stride];
+                                tmp += kernel[i]._kernel[n][l][m] *
+                                       input._kernel[n][l + j * _confi._stride][m + k * _confi._stride];
                             }
                         }
                     }
-                    result.kernel[i][j][k] = tmp;
+                    result._kernel[i][j][k] = tmp;
                 }
             }
         }
@@ -86,10 +86,10 @@ Tensor MaxPool2d::calculate(Tensor &input) {
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <result_ny ; ++j) {
             for (int k = 0; k <result_nx ; ++k) {
-                double tmp = max(input.kernel[i][2*j][2*k], input.kernel[i][2*j+1][2*k]);
-                tmp = max(tmp,input.kernel[i][2*j][2*k+1]);
-                tmp = max(tmp,input.kernel[i][2*j+1][2*k+1]);
-                result.kernel[i][j][k] = tmp;
+                double tmp = max(input._kernel[i][2*j][2*k], input._kernel[i][2*j+1][2*k]);
+                tmp = max(tmp,input._kernel[i][2*j][2*k+1]);
+                tmp = max(tmp,input._kernel[i][2*j+1][2*k+1]);
+                result._kernel[i][j][k] = tmp;
             }
         }
     }
@@ -103,11 +103,11 @@ Tensor Linear::calculate(Tensor &input) {
         int tmpy = input.get_ny();
         int tmpz = input.get_nz();
         for (int l = 0; l < weights.get_ny(); ++l) {
-            result.kernel[0][0][l]=_confi._bias[l];
+            result._kernel[0][0][l]=_confi._bias[l];
             for (int i = 0; i < tmpz; ++i) {
                 for (int j = 0; j < tmpy; ++j) {
                     for (int k = 0; k < tmpx; ++k) {
-                        result.kernel[0][0][l] += input.kernel[i][j][k] * weights.kernel[0][l][k+tmpx*j+tmpy*i];
+                        result._kernel[0][0][l] += input._kernel[i][j][k] * weights._kernel[0][l][k+tmpx*j+tmpy*i];
                     }
                 }
             }
@@ -116,9 +116,9 @@ Tensor Linear::calculate(Tensor &input) {
     } else{
         //tmpy=1;
         for (int i = 0; i < weights.get_ny(); ++i) {
-            result.kernel[0][0][i]=_confi._bias[i];
+            result._kernel[0][0][i]=_confi._bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
-                result.kernel[0][0][i] += input.kernel[0][0][j] * weights.kernel[0][i][j];
+                result._kernel[0][0][i] += input._kernel[0][0][j] * weights._kernel[0][i][j];
             }
         }
         return result;
@@ -130,7 +130,7 @@ Tensor Relu::calculate(Tensor &input) {
     for (int i = 0; i <result.get_nz() ; ++i) {
         for (int j = 0; j <result.get_ny() ; ++j) {
             for (int k = 0; k <result.get_nx() ; ++k) {
-                result.kernel[i][j][k] = max(0.0, input.kernel[i][j][k]);
+                result._kernel[i][j][k] = max(0.0, input._kernel[i][j][k]);
             }
         }
     }

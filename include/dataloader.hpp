@@ -2,15 +2,38 @@
 #define TINYTENSOR_DATALOADER_HPP
 
 #include <string>
+#include <cstdio>
+#include <iostream>
 #include "tensor.hpp"
 #include "network.hpp"
 
 using namespace std;
 
-vector<Tensor> dataloader(string & datapath);
+// the implementation of this class refer to https://github.com/pauldpong/mnist-dataloader
+class MNISTData {
+public:
+	MNISTData(FILE* images, FILE* labels);
+	~MNISTData();
+	void show(int index);
+	Tensor operator[] (int index);
+private:
+	std::vector<std::vector<int> > _images;
+	std::vector<int> _labels;
+	int _size;
+	int _pixels_in_row;
+	int _pixels_in_col;
+};
 
-vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
+unsigned int& endianSwap(unsigned int &x);
 
-Network load_weights(string & datapath);
+MNISTData load_training_data(string & training_directory);
+
+MNISTData load_test_data(string & test_directory);
+
+// vector<Tensor> dataloader(string & datapath);
+
+// vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
+
+// Network load_weights(string & datapath);
 
 #endif //TINYTENSOR_DATALOADER_HPP
