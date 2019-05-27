@@ -12,8 +12,8 @@ public:
 
     Network(vector<Layer*> & ls);
 
-    void add_layer(Layer & l){
-      layers.push_back(&l);
+    void add_layer(Layer * l){
+      layers.push_back(l);
     }
 
     Tensor eval(Tensor & input); //run the network, iteratively use calculate function in the layer
