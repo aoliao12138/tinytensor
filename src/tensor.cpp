@@ -3,7 +3,7 @@
 using namespace std;
 
 Tensor::Tensor(int x, int y, int z) :
-        _nx(x),_ny(y),_nz(z),_kernel(vector<vector<vector<double> > > (_nz, vector<vector<double> >(_ny, vector<double>(_nx)))) {
+        _nx(x),_ny(y),_nz(z) {
 }
 
 int Tensor::max_tensor_index() {

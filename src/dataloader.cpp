@@ -87,6 +87,11 @@ int MNISTData::label(int index) {
     return _labels[index];
 }
 
+int MNISTData::getSize() {
+    return _images.size();
+}
+
+
 MNISTData load_training_data(string & training_directory) {
     string image_location_str = training_directory + "/train-images.idx3-ubyte";
     string label_location_str = training_directory + "/train-labels.idx1-ubyte";
@@ -109,5 +114,18 @@ MNISTData load_test_data(string & test_directory) {
     return test;
 }
 
+vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
+    std::vector<Tensor> result;
+    MNISTData test = load_test_data(datapath);
+    cout << test.getSize() << endl;
+    for (int i = 0; i < test.getSize(); ++i) {
+        result.push_back(test[i]);
+        labels.push_back(test.label(i));
+    }
+    cout << "result size: " << result.size() << endl;
+    cout << "label size: " << labels.size() << endl;
+    return result;
+
+}
 
 
