@@ -6,6 +6,8 @@
 #include <iostream>
 #include "tensor.hpp"
 #include "network.hpp"
+#include "parameter.hpp"
+#include "layer.hpp"
 
 using namespace std;
 
@@ -36,6 +38,6 @@ MNISTData load_test_data(string & test_directory);
 
 vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
 
-// Network load_weights(string & datapath);
+Network load_weights();
 
 #endif //TINYTENSOR_DATALOADER_HPP

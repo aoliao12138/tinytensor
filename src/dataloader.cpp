@@ -114,6 +114,7 @@ MNISTData load_test_data(string & test_directory) {
     return test;
 }
 
+<<<<<<< HEAD
 vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
     std::vector<Tensor> result;
     MNISTData test = load_test_data(datapath);
@@ -128,4 +129,42 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
 
 }
 
+// Author: huzy
+// Create a Network, load all weight into it and return.
+// Notice that layer names are: 1, 2, 3..., 10, should be changed later.
+Network MNISTData::load_weights() {
+    Network net;
+
+    Layer * L1 = Layer::creater(mode, c1, parameters_1);  // TODO:
+    net.add_layer(L1);
+
+    Layer * L2 = Layer::creater(mode, c2, parameters_2);  // TODO:
+    net.add_layer(L2);
+
+    Layer * L3 = Layer::creater(mode, c3, parameters_3);  // TODO:
+    net.add_layer(L3);
+
+    Layer * L4 = Layer::creater(mode, c4, parameters_4);  // TODO:
+    net.add_layer(L4);
+
+    Layer * L5 = Layer::creater(mode, c5, parameters_5);  // TODO:
+    net.add_layer(L5);
+
+    Layer * L6 = Layer::creater(mode, c6, parameters_6);  // TODO:
+    net.add_layer(L6);
+
+    Layer * L7 = Layer::creater(mode, c7, parameters_7);  // TODO:
+    net.add_layer(L7);
+
+    Layer * L8 = Layer::creater(mode, c8, parameters_8);  // TODO:
+    net.add_layer(L8);
+
+    Layer * L9 = Layer::creater(mode, c9, parameters_9);  // TODO:
+    net.add_layer(L9);
+
+    Layer * L10 = Layer::creater(mode, c10, parameters_10);  // TODO:
+    net.add_layer(L10);
+
+    return net;
+}
 
