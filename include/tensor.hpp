@@ -9,6 +9,7 @@ using namespace std;
 class Tensor {
 public:
     Tensor(int x=1, int y=1, int z=1);
+    Tensor(int x, int y, int z,int mode);
     int get_nx();
     int get_ny();
     int get_nz();

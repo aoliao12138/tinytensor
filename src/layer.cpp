@@ -54,6 +54,7 @@ Linear::Linear(LinearConfigure *confi): _confi(*confi) {
 }
 
 void Linear::setkernel(vector<vector<vector<double> > > &x) {
+
     weights.set_kernel(x);
 }
 
@@ -65,9 +66,9 @@ Relu::Relu() {
 Tensor Conv::calculate(Tensor &input) {
     int result_nx = (input.get_nx() + 2 * _confi._padding - _confi._kernel_size) / _confi._stride + 1;
     int result_ny = (input.get_ny() + 2 * _confi._padding - _confi._kernel_size) / _confi._stride + 1;
-    Tensor result(result_nx,result_ny,_confi._output);
+    Tensor result(result_nx,result_ny,_confi._output,0);
     if (_confi._padding!=0) {
-        pad(input,_confi._padding);
+        input=pad(input,_confi._padding);
     }
     for (int i = 0; i < _confi._output; ++i) {
         for (int j = 0; j < result_ny; ++j) {
@@ -119,7 +120,7 @@ Tensor Conv::pad(Tensor &x, int _padding) {
 Tensor MaxPool2d::calculate(Tensor &input) {
     int result_nx = input.get_nx() / 2;
     int result_ny = input.get_ny() / 2;
-    Tensor result(result_nx,result_ny,input.get_nz());
+    Tensor result(result_nx,result_ny,input.get_nz(),0);
 
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <result_ny ; ++j) {
@@ -135,12 +136,12 @@ Tensor MaxPool2d::calculate(Tensor &input) {
 }
 
 Tensor Linear::calculate(Tensor &input) {
-    Tensor result(weights.get_nx(),1,1);
+    Tensor result(_confi._output,1,1,0);
     if (input.get_nz()!=1) {
         int tmpx = input.get_nx();
         int tmpy = input.get_ny();
         int tmpz = input.get_nz();
-        for (int l = 0; l < weights.get_ny(); ++l) {
+        for (int l = 0; l < _confi._output; ++l) {
             result._kernel[0][0][l]=_confi._bias[l];
             for (int i = 0; i < tmpz; ++i) {
                 for (int j = 0; j < tmpy; ++j) {
@@ -153,7 +154,7 @@ Tensor Linear::calculate(Tensor &input) {
         return result;
     } else{
         //tmpy=1;
-        for (int i = 0; i < weights.get_ny(); ++i) {
+        for (int i = 0; i < _confi._output; ++i) {
             result._kernel[0][0][i]=_confi._bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
                 result._kernel[0][0][i] += input._kernel[0][0][j] * weights._kernel[0][i][j];
@@ -164,13 +165,13 @@ Tensor Linear::calculate(Tensor &input) {
 }
 
 Tensor Relu::calculate(Tensor &input) {
-    Tensor result(input.get_nx(),input.get_ny(),input.get_nz());
-    for (int i = 0; i <result.get_nz() ; ++i) {
-        for (int j = 0; j <result.get_ny() ; ++j) {
-            for (int k = 0; k <result.get_nx() ; ++k) {
-                result._kernel[i][j][k] = max(0.0, input._kernel[i][j][k]);
+    //Tensor result(input.get_nx(),input.get_ny(),input.get_nz(),0);
+    for (int i = 0; i <input.get_nz() ; ++i) {
+        for (int j = 0; j <input.get_ny() ; ++j) {
+            for (int k = 0; k <input.get_nx() ; ++k) {
+                input._kernel[i][j][k] = max(0.0, input._kernel[i][j][k]);
             }
         }
     }
-    return result;
+    return input;
 }
