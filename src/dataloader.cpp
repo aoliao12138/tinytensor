@@ -1,4 +1,5 @@
 #include "dataloader.hpp"
+#include "para.hpp"
 
 unsigned int& endianSwap(unsigned int &x) {
     x = (x>>24)|((x<<8)&0x00FF0000)|((x>>8)&0x0000FF00)|(x<<24);
@@ -65,6 +66,7 @@ void MNISTData::show(int index) {
 
 Tensor MNISTData::operator[] (int index) {
     Tensor result = Tensor(1, 28, 28);
+    //Tensor result = Tensor(28, 28, 1);
     std::vector<std::vector<std::vector<double> > > kernel_vec;
     std::vector<double> row;
     std::vector<std::vector<double> > image;
@@ -114,7 +116,6 @@ MNISTData load_test_data(string & test_directory) {
     return test;
 }
 
-<<<<<<< HEAD
 vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
     std::vector<Tensor> result;
     MNISTData test = load_test_data(datapath);
@@ -129,41 +130,84 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
 
 }
 
-// Author: huzy
 // Create a Network, load all weight into it and return.
-// Notice that layer names are: 1, 2, 3..., 10, should be changed later.
-Network MNISTData::load_weights() {
+Network load_weights() {
     Network net;
 
-    Layer * L1 = Layer::creater(mode, c1, parameters_1);  // TODO:
+    ConvConfigure c1(1,6,5,parameters_2,1,2);
+    Layer * L1 = Layer::creator(CONV, &c1);
+    Conv * conv1=dynamic_cast<Conv *>(L1);
+    vector<Tensor> k1;
+    for (int i = 0; i <parameters_1.size() ; ++i) {
+        Tensor tmp=Tensor(5,5,1);
+        tmp.set_kernel(parameters_1[i]);
+        k1.push_back(tmp);
+    }
+    conv1->setkernel(k1);
     net.add_layer(L1);
 
-    Layer * L2 = Layer::creater(mode, c2, parameters_2);  // TODO:
+    Layer * L2 = Layer::creator(RELU, nullptr);
     net.add_layer(L2);
 
-    Layer * L3 = Layer::creater(mode, c3, parameters_3);  // TODO:
+    PoolConfigure p1(2,2);
+
+    Layer * L3 = Layer::creator(POOL, &p1);
     net.add_layer(L3);
 
-    Layer * L4 = Layer::creater(mode, c4, parameters_4);  // TODO:
+    ConvConfigure c2(6,16,5,parameters_4);
+    Layer * L4 = Layer::creator(CONV, &c2);
+
+    Conv* conv2=dynamic_cast<Conv* >(L4);
+    vector<Tensor> k4;
+    for (int i = 0; i <parameters_3.size() ; ++i) {
+        Tensor tmp=Tensor(5,5,6);
+        tmp.set_kernel(parameters_3[i]);
+        k4.push_back(tmp);
+    }
+    conv2->setkernel(k4);
+
     net.add_layer(L4);
 
-    Layer * L5 = Layer::creater(mode, c5, parameters_5);  // TODO:
+    Layer * L5 = Layer::creator(RELU, nullptr);
     net.add_layer(L5);
 
-    Layer * L6 = Layer::creater(mode, c6, parameters_6);  // TODO:
+    PoolConfigure p2(2,2);
+
+    Layer * L6 = Layer::creator(POOL, &p2);
     net.add_layer(L6);
 
-    Layer * L7 = Layer::creater(mode, c7, parameters_7);  // TODO:
+    LinearConfigure l1(16*5*5,120,parameters_6);
+
+    Layer * L7 = Layer::creator(LINEAR, &l1);
+
+    Linear* line1= dynamic_cast<Linear*>(L7);
+    line1->setkernel(parameters_5);
+
     net.add_layer(L7);
 
-    Layer * L8 = Layer::creater(mode, c8, parameters_8);  // TODO:
+    Layer * L8 = Layer::creator(RELU, nullptr);
     net.add_layer(L8);
 
-    Layer * L9 = Layer::creater(mode, c9, parameters_9);  // TODO:
+    LinearConfigure l2(120,84,parameters_8);
+
+    Layer * L9 = Layer::creator(LINEAR, &l2);
+
+    Linear* line2= dynamic_cast<Linear*>(L9);
+    line2->setkernel(parameters_7);
+
     net.add_layer(L9);
 
-    Layer * L10 = Layer::creater(mode, c10, parameters_10);  // TODO:
+    Layer * L10 = Layer::creator(RELU, nullptr);
     net.add_layer(L10);
+
+    LinearConfigure l3(84,10,parameters_10);
+
+    Layer * L11 = Layer::creator(LINEAR, &l3);
+
+    Linear* line3= dynamic_cast<Linear*>(L11);
+    line3->setkernel(parameters_9);
+
+    net.add_layer(L11);
 
     return net;
 }

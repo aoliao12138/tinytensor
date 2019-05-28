@@ -20,7 +20,7 @@ public:
     virtual ~Configure()= default;
 };
 
-class ConvConfigure: Configure{
+class ConvConfigure: public Configure{
 public:
     int _input;
     int _output;
@@ -33,7 +33,7 @@ public:
             , int stride=1, int padding=0);
 };
 
-class PoolConfigure: Configure{
+class PoolConfigure: public Configure{
 public:
     int _kernel_size;
     int _stride;
@@ -41,7 +41,7 @@ public:
     PoolConfigure(int kernel_size,int stride=2,int padding=0);
 };
 
-class LinearConfigure: Configure{
+class LinearConfigure: public Configure{
 public:
     int _input;
     int _output;
@@ -65,9 +65,7 @@ public:
         this->name = name;
       }
 
-    Layer * creator(int mode, Configure *c );
-
-    Layer * creator(int mode, Configure &c, Tensor &t);
+    static Layer * creator(int mode, Configure *c );
 
     virtual Tensor calculate(Tensor & input)=0;
 };
@@ -76,10 +74,15 @@ class Conv: public Layer{
     ConvConfigure _confi;
 
     vector<Tensor> kernel;
+
+    Tensor pad(Tensor& x,int _padding);
+
 public:
     Conv(ConvConfigure *confi);
 
     Tensor calculate(Tensor & input);
+
+    void setkernel( vector<Tensor> & x);
 };
 
 class MaxPool2d: public Layer{
@@ -99,6 +102,8 @@ public:
     Linear(LinearConfigure *confi);
 
     Tensor calculate(Tensor & input);
+
+    void setkernel(vector<vector<vector<double> > > & x);
 };
 class Relu: public Layer{
 public:

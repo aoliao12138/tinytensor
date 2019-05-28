@@ -6,7 +6,7 @@ SET(CMAKE_CXX_STANDARD 14)
 #set build type
 set(CMAKE_BUILD_TYPE Debug)
 
-## Major project
+# Major project
 INCLUDE_DIRECTORIES(include)
 
 set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp src/dataloader.cpp)

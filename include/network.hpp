@@ -8,9 +8,6 @@ using namespace std;
 
 class Network{
 public:
-    Network();
-
-    Network(vector<Layer*> & ls);
 
     void add_layer(Layer * l){
       layers.push_back(l);

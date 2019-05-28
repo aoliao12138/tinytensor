@@ -6,7 +6,6 @@
 #include <iostream>
 #include "tensor.hpp"
 #include "network.hpp"
-#include "parameter.hpp"
 #include "layer.hpp"
 
 using namespace std;

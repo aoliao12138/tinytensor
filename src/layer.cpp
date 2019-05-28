@@ -39,6 +39,10 @@ Conv::Conv(ConvConfigure *confi): _confi(*confi) {
     }
 }
 
+void Conv::setkernel(vector<Tensor> &x) {
+    kernel=x;
+}
+
 MaxPool2d::MaxPool2d(PoolConfigure *confi): _confi(*confi) {
     setName("MaxPool2d");
 }
@@ -47,6 +51,10 @@ Linear::Linear(LinearConfigure *confi): _confi(*confi) {
     setName("Linear");
     Tensor tmp (1,_confi._output,_confi._input);
     weights=tmp;
+}
+
+void Linear::setkernel(vector<vector<vector<double> > > &x) {
+    weights.set_kernel(x);
 }
 
 Relu::Relu() {
@@ -58,26 +66,56 @@ Tensor Conv::calculate(Tensor &input) {
     int result_nx = (input.get_nx() + 2 * _confi._padding - _confi._kernel_size) / _confi._stride + 1;
     int result_ny = (input.get_ny() + 2 * _confi._padding - _confi._kernel_size) / _confi._stride + 1;
     Tensor result(result_nx,result_ny,_confi._output);
-    if (_confi._padding==0) {
-        for (int i = 0; i < _confi._output; ++i) {
-            for (int j = 0; j < result_ny; ++j) {
-                for (int k = 0; k < result_nx; ++k) {
-                    double tmp = _confi._bias[i];
-                    for (int n = 0; n < kernel[i].get_nz(); ++n) {
-                        for (int l = 0; l < kernel[i].get_ny(); ++l) {
-                            for (int m = 0; m < kernel[i].get_nx(); ++m) {
-                                tmp += kernel[i]._kernel[n][l][m] *
-                                       input._kernel[n][l + j * _confi._stride][m + k * _confi._stride];
-                            }
+    if (_confi._padding!=0) {
+        pad(input,_confi._padding);
+    }
+    for (int i = 0; i < _confi._output; ++i) {
+        for (int j = 0; j < result_ny; ++j) {
+            for (int k = 0; k < result_nx; ++k) {
+                double tmp = _confi._bias[i];
+                for (int n = 0; n < kernel[i].get_nz(); ++n) {
+                    for (int l = 0; l < kernel[i].get_ny(); ++l) {
+                        for (int m = 0; m < kernel[i].get_nx(); ++m) {
+                            tmp += kernel[i]._kernel[n][l][m] *
+                                   input._kernel[n][l + j * _confi._stride][m + k * _confi._stride];
                         }
                     }
-                    result._kernel[i][j][k] = tmp;
                 }
+                result._kernel[i][j][k] = tmp;
             }
         }
     }
+
     return result;
 }
+
+Tensor Conv::pad(Tensor &x, int _padding) {
+    vector<vector<vector<double > > > result;
+    for (int i = 0; i <x.get_nz() ; ++i) {
+        vector<vector<double> > matrix;
+        for (int j = 0; j <x.get_ny()+2*_padding ; ++j) {
+            if (j<_padding||j>=x.get_ny()+_padding){
+                vector<double> v(x.get_nx()+2*_padding,0);
+                matrix.push_back(v);
+            }else{
+                vector<double > v;
+                for (int k = 0; k <x.get_nx()+_padding ; ++k) {
+                    if (k<_padding||k>=x.get_nx()+_padding){
+                        v.push_back(0);
+                    }else{
+                        v.push_back(x._kernel[i][j-_padding][k-_padding]);
+                    }
+                }
+                matrix.push_back(v);
+            }
+        }
+        result.push_back(matrix);
+    }
+    Tensor r;
+    r.set_kernel(result);
+    return r;
+}
+
 Tensor MaxPool2d::calculate(Tensor &input) {
     int result_nx = input.get_nx() / 2;
     int result_ny = input.get_ny() / 2;

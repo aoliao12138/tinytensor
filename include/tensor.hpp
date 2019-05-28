@@ -12,7 +12,7 @@ public:
     int get_nx();
     int get_ny();
     int get_nz();
-    void set_kernel(vector<vector<vector<double> > >);
+    void set_kernel(vector<vector<vector<double> > > & my_kernel);
     int max_tensor_index(); //return the max element in the tensor
 
     vector<vector<vector<double> > > _kernel;

@@ -8,12 +8,12 @@ using namespace std;
 
 int main(){
 
-  string datapath="../../MNIST";
+  string datapath="/media/yurisa/本地磁盘/Junior/C++/Project/MNIST";
   string weightpath="../../weights";
 
   vector<int> labels;
   vector<Tensor> images=load_MNIST(datapath, labels);
-  Network Lenet5=load_weights(weightpath);
+  Network Lenet5=load_weights();
 
   double correct=0;
 

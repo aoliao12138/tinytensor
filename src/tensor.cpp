@@ -33,6 +33,6 @@ int Tensor::get_nz() {
     return _nz;
 }
 
-void Tensor::set_kernel(vector<vector<vector<double> > > my_kernel) {
+void Tensor::set_kernel(vector<vector<vector<double> > > &my_kernel) {
 	_kernel = my_kernel;
 }
