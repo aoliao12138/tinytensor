@@ -67,22 +67,24 @@ void MNISTData::show(int index) {
 Tensor MNISTData::operator[] (int index) {
     Tensor result = Tensor(28, 28, 1);
     std::vector<std::vector<std::vector<double> > > kernel_vec;
-    std::vector<std::vector<std::vector<double> > > image;
-    std::vector<std::vector<double> > row;
+    std::vector<std::vector<double> > image;
+    std::vector<double> row;
     int pixel_count = 0;
     for (auto pixel : _images[index]) {
         if (pixel_count % 28 == 0 && row.size() == 28) {
             image.push_back(row);
             row.clear();
         }
-        std::vector<double> pixel_vec;
-        pixel_vec.push_back(pixel);
-        row.push_back(pixel_vec);
+        row.push_back(pixel);
         pixel_count ++;
     }
-    result.set_kernel(image);
+    image.push_back(row);
+    kernel_vec.push_back(image);
+    result.set_kernel(kernel_vec);
     return result;
 }
+
+
 
 
 int MNISTData::label(int index) {
