@@ -6,13 +6,13 @@ Tensor::Tensor(int x, int y, int z) :
         _nx(x),_ny(y),_nz(z) {
 }
 
-Tensor::Tensor(int x, int y, int z,int mode) :
+Tensor::Tensor(int x, int y, int z,double num) :
         _nx(x),_ny(y),_nz(z) {
     vector<vector<vector<double > > > k;
     for (int i = 0; i < _nz; ++i) {
         vector<vector<double> > m;
         for (int j = 0; j < _ny; ++j) {
-            vector<double> v(_nx,0);
+            vector<double> v(_nx,num);
             m.push_back(v);
         }
         k.push_back(m);

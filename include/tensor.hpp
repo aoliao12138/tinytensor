@@ -5,11 +5,12 @@
 #include <vector>
 using namespace std;
 
-//if it is 2 dimenson then nz is 1;
+/** \brief Tensor is a basic computation data structure in the neural network.
+ */
 class Tensor {
 public:
     Tensor(int x=1, int y=1, int z=1);
-    Tensor(int x, int y, int z,int mode);
+    Tensor(int x, int y, int z,double num);
     int get_nx();
     int get_ny();
     int get_nz();
