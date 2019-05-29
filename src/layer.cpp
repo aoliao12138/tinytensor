@@ -100,7 +100,7 @@ Tensor Conv::pad(Tensor &x, int _padding) {
                 matrix.push_back(v);
             }else{
                 vector<double > v;
-                for (int k = 0; k <x.get_nx()+_padding ; ++k) {
+                for (int k = 0; k <x.get_nx()+2*_padding ; ++k) {
                     if (k<_padding||k>=x.get_nx()+_padding){
                         v.push_back(0);
                     }else{
