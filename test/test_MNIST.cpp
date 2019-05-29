@@ -13,7 +13,7 @@ int main(){
 
     vector<int> labels;
     vector<Tensor> images=load_MNIST(datapath, labels);
-    Network Lenet5=load_weights();
+    Network Lenet5=load_Lenet_weights();
 
     double correct=0;
 

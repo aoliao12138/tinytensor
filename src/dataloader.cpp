@@ -133,7 +133,7 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
 }
 
 // Create a Network, load all weight into it and return.
-Network load_weights() {
+Network load_Lenet_weights() {
     Network net;
 
     ConvConfigure c1(1,6,5,parameters_2,1,2);

@@ -1,14 +1,60 @@
 \hypertarget{classNetwork}{}\doxysection{Network Class Reference}
 \label{classNetwork}\index{Network@{Network}}
+
+
+The network class is to store the structure of the neural network. Also, it can calculate the result of the network.  
+
+
+
+
+{\ttfamily \#include $<$network.\+hpp$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{classNetwork_a26c8c8b99661eea58a2f9602906340f0}{add\+\_\+layer}} (\mbox{\hyperlink{classLayer}{Layer}} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Add a layer for the neural network. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classNetwork_a1fc7063860db2555a9cfb3e9248b4658}{eval}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
+\begin{DoxyCompactList}\small\item\em Response function\+: calculate the result of the neural network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The network class is to store the structure of the neural network. Also, it can calculate the result of the network. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classNetwork_a26c8c8b99661eea58a2f9602906340f0}\label{classNetwork_a26c8c8b99661eea58a2f9602906340f0}} 
-void {\bfseries add\+\_\+layer} (\mbox{\hyperlink{classLayer}{Layer}} $\ast$l)
-\item 
+\index{Network@{Network}!add\_layer@{add\_layer}}
+\index{add\_layer@{add\_layer}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{add\_layer()}{add\_layer()}}
+{\footnotesize\ttfamily void Network\+::add\+\_\+layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLayer}{Layer}} $\ast$}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a layer for the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & A concrete layer pointer inherit from \mbox{\hyperlink{classLayer}{Layer}} class \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classNetwork_a1fc7063860db2555a9cfb3e9248b4658}\label{classNetwork_a1fc7063860db2555a9cfb3e9248b4658}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries eval} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
-\end{DoxyCompactItemize}
+\index{Network@{Network}!eval@{eval}}
+\index{eval@{eval}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} Network\+::eval (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Response function\+: calculate the result of the neural network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & A tensor store one picture with many channels or some pictures. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output vector(layer) 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -15,11 +15,17 @@
 
 using namespace std;
 
+/**
+ * @brief base type for layer configures
+ */
 class Configure{
 public:
     virtual ~Configure()= default;
 };
 
+/**
+ * @brief Configures for a convolution layer
+ */
 class ConvConfigure: public Configure{
 public:
     int _input;
@@ -29,115 +35,266 @@ public:
     int _padding;
     vector<double> _bias;
 
+    /**
+     * @brief Constructor.
+     * @param input_channels input channels of convolution layer
+     * @param output_channels output channels of convolution layer
+     * @param kernel_size kernel size of the convolution
+     * @param bias bias of each output channel
+     * @param stride  controls the stride for the cross-correlation
+     * @param padding controls the amount of zero-paddings of the image
+     */
     ConvConfigure(int input_channels, int output_channels,int kernel_size, vector<double> bias
             , int stride=1, int padding=0);
 };
 
+/**
+ * @brief Configures for a pool layer
+ */
 class PoolConfigure: public Configure{
 public:
     int _kernel_size;
     int _stride;
     int _padding;
-    PoolConfigure(int kernel_size,int stride=2,int padding=0);
+    /**
+     * @brief Constructor.
+     * @param kernel_size kernel size for max pooling
+     * @param stride the stride of the window
+     * @param padding controls the amount of zero-paddings of the image
+     */
+    PoolConfigure(int kernel_size, int stride=2, int padding=0);
 };
 
+/**
+ * @brief Configures for a fully connected layer
+ */
 class LinearConfigure: public Configure{
 public:
     int _input;
     int _output;
     vector<double> _bias;
+    /**
+     * @brief Constructor.
+     * @param input_features input features of a fully connected layer
+     * @param output_features output features of a fully connected layer
+     * @param bias bias of each output feature
+     */
     LinearConfigure(int input_features, int output_features, vector<double> bias);
 };
 
-//Factory Method
 
+/**
+ * @brief base class of different layers.
+ */
 class Layer{
 private:
-    string name; //layer name for debug
-
+    /**
+     * name of the layer (like conv, linear, relu)
+     */
+    string name;
 
 public:
+    /**
+     * @brief get the name of layer
+     * @return the name of layer
+     */
     string getName() {
         return name;
       }
-
+    /**
+     * @brief set the name of layer
+     * @param name the name you want to call this layer
+     */
     void setName(string name) {
         this->name = name;
       }
 
+    /**
+     * @brief Factory method to let the subclass to generate the concerte layer
+     * @param mode decide which kind of layer to create
+     * @param c configure needed for the layer
+     * @return base type pointer of layer
+     */
     static Layer * creator(int mode, Configure *c );
 
+    /**
+     * @brief calculate the result of the layer
+     * @param input output of the last layer
+     * @return the input of next layer
+     */
     virtual Tensor calculate(Tensor & input)=0;
 };
 
+/**
+ *@brief convolution layer
+ */
 class Conv: public Layer{
+    /**
+     * store some parameters for convolution
+     */
     ConvConfigure _confi;
 
+    /**
+     * convolution kernel
+     */
     vector<Tensor> kernel;
 
+    /**
+     * @brief padding function for convolution
+     * @param x the input that need to pad
+     * @param _padding the amount of 0 for one side
+     * @return the tensor that has been padded
+     */
     Tensor pad(Tensor& x,int _padding);
 
 public:
+    /**
+     * @brief constructor
+     * @param confi parameters for convolution
+     */
     Conv(ConvConfigure *confi);
 
+    /**
+     * @brief calculate the result of the layer
+     * @param input output of the last layer
+     * @return the input of next layer
+     */
     Tensor calculate(Tensor & input);
 
+    /**
+     * @brief set the kernel of convolution directly
+     * @param x convolution kernel
+     */
     void setkernel( vector<Tensor> & x);
 };
 
+/**
+ * @brief maxpool layer
+ */
 class MaxPool2d: public Layer{
+    /**
+     * parameters for pool
+     */
     PoolConfigure _confi;
 
 public:
+    /**
+     * @brief constructor
+     * @param confi pooling parameters
+     */
     MaxPool2d(PoolConfigure *confi);
 
+    /**
+     * @brief calculate the result of the layer
+     * @param input output of the last layer
+     * @return the input of next layer
+     */
     Tensor calculate(Tensor & input);
 };
 
+/**
+ * @brief fully connected layer
+ */
 class Linear: public Layer{
+    /**
+     * parameters for fully connected layer
+     */
     LinearConfigure _confi;
 
+    /**
+     * weights for fully connected layer
+     */
     Tensor weights;
 public:
+    /**
+     * @brief constructor
+     * @param confi parameters for fully connected layer
+     */
     Linear(LinearConfigure *confi);
 
+    /**
+    * @brief calculate the result of the layer
+    * @param input output of the last layer
+    * @return the input of next layer
+    */
     Tensor calculate(Tensor & input);
 
+    /**
+     * @brief set the kernel of fully connnected layer directly
+     * @param x weight for fully connnected layer
+     */
     void setkernel(vector<vector<vector<double> > > & x);
 };
+
+/**
+ * @brief layer for relu calculation
+ */
 class Relu: public Layer{
 public:
+    /**
+     * @brief constructor.
+     */
     Relu();
 
+    /**
+    * @brief calculate the result of the layer
+    * @param input output of the last layer
+    * @return the input of next layer
+    */
     Tensor calculate(Tensor & input);
 };
- //optional
+
+/**
+ * @brief layer for sigmod calculation
+ */
 class Sigmoid: public Layer{
 public:
+    /**
+     * constructor
+     */
     Sigmoid();
 
+    /**
+   * @brief calculate the result of the layer
+   * @param input output of the last layer
+   * @return the input of next layer
+   */
     Tensor calculate(Tensor & input);
 };
-//optional
+
+/**
+ * @brief layer for tanh calculation
+ */
 class Tanh: public Layer{
 public:
+    /**
+     * @brief constructor
+     */
     Tanh();
 
+    /**
+   * @brief calculate the result of the layer
+   * @param input output of the last layer
+   * @return the input of next layer
+   */
     Tensor calculate(Tensor & input);
 };
 
+/**
+ * @brief layer for softmax calculation
+ */
 class Softmax: public Layer{
 public:
+    /**
+     * @brief constructor
+     */
     Softmax();
 
-    Tensor calculate(Tensor & input);
-};
-
-//need to comfirm
-class LogSoftmax: public Layer{
-public:
-    LogSoftmax();
-
+    /**
+   * @brief calculate the result of the layer
+   * @param input output of the last layer
+   * @return the input of next layer
+   */
     Tensor calculate(Tensor & input);
 };
 

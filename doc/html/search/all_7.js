@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tanh',['Tanh',['../classTanh.html',1,'']]],
-  ['tensor',['Tensor',['../classTensor.html',1,'']]]
+  ['network',['Network',['../classNetwork.html',1,'']]]
 ];

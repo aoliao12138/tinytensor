@@ -70,20 +70,25 @@ $(function() {
 <div class="title">ConvConfigure Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Configures for a convolution layer.  
+ <a href="classConvConfigure.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="layer_8hpp_source.html">layer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ConvConfigure:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classConvConfigure.png" usemap="#ConvConfigure_map" alt=""/>
   <map id="ConvConfigure_map" name="ConvConfigure_map">
-<area href="classConfigure.html" alt="Configure" shape="rect" coords="0,0,98,24"/>
+<area href="classConfigure.html" title="base type for layer configures" alt="Configure" shape="rect" coords="0,0,98,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a81424987eec3b1f1292cc126e4bdbe96"><td class="memItemLeft" align="right" valign="top"><a id="a81424987eec3b1f1292cc126e4bdbe96"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ConvConfigure</b> (int input_channels, int output_channels, int kernel_size, vector&lt; double &gt; bias, int stride=1, int padding=0)</td></tr>
+<tr class="memitem:a81424987eec3b1f1292cc126e4bdbe96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConvConfigure.html#a81424987eec3b1f1292cc126e4bdbe96">ConvConfigure</a> (int input_channels, int output_channels, int kernel_size, vector&lt; double &gt; bias, int stride=1, int padding=0)</td></tr>
+<tr class="memdesc:a81424987eec3b1f1292cc126e4bdbe96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classConvConfigure.html#a81424987eec3b1f1292cc126e4bdbe96">More...</a><br /></td></tr>
 <tr class="separator:a81424987eec3b1f1292cc126e4bdbe96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -107,6 +112,74 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_padding</b></td></tr>
 vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_bias</b></td></tr>
 <tr class="separator:a1036d804d2971ecbe616ea975f6ebbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Configures for a convolution layer. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a81424987eec3b1f1292cc126e4bdbe96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81424987eec3b1f1292cc126e4bdbe96">&#9670;&nbsp;</a></span>ConvConfigure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConvConfigure::ConvConfigure </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>input_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>output_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>kernel_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>bias</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>stride</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>padding</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_channels</td><td>input channels of convolution layer </td></tr>
+    <tr><td class="paramname">output_channels</td><td>output channels of convolution layer </td></tr>
+    <tr><td class="paramname">kernel_size</td><td>kernel size of the convolution </td></tr>
+    <tr><td class="paramname">bias</td><td>bias of each output channel </td></tr>
+    <tr><td class="paramname">stride</td><td>controls the stride for the cross-correlation </td></tr>
+    <tr><td class="paramname">padding</td><td>controls the amount of zero-paddings of the image </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="layer_8hpp_source.html">layer.hpp</a></li>
 </ul>

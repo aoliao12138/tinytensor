@@ -1,5 +1,14 @@
 \hypertarget{classSigmoid}{}\doxysection{Sigmoid Class Reference}
 \label{classSigmoid}\index{Sigmoid@{Sigmoid}}
+
+
+layer for sigmod calculation  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Sigmoid\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,10 +18,48 @@ Inheritance diagram for Sigmoid\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}\label{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries calculate} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classSigmoid_af871f2160541f3aa75558900cae467ba}{Sigmoid}} ()
+\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}{calculate}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
+\begin{DoxyCompactList}\small\item\em calculate the result of the layer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+layer for sigmod calculation 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSigmoid_af871f2160541f3aa75558900cae467ba}\label{classSigmoid_af871f2160541f3aa75558900cae467ba}} 
+\index{Sigmoid@{Sigmoid}!Sigmoid@{Sigmoid}}
+\index{Sigmoid@{Sigmoid}!Sigmoid@{Sigmoid}}
+\doxysubsubsection{\texorpdfstring{Sigmoid()}{Sigmoid()}}
+{\footnotesize\ttfamily Sigmoid\+::\+Sigmoid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}\label{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}} 
+\index{Sigmoid@{Sigmoid}!calculate@{calculate}}
+\index{calculate@{calculate}!Sigmoid@{Sigmoid}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} Sigmoid\+::calculate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+calculate the result of the layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & output of the last layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input of next layer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLayer_a93db894abc31f7b5483d035ffbd57db0}{Layer}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

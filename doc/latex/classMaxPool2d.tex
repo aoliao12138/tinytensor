@@ -1,5 +1,14 @@
 \hypertarget{classMaxPool2d}{}\doxysection{Max\+Pool2d Class Reference}
 \label{classMaxPool2d}\index{MaxPool2d@{MaxPool2d}}
+
+
+maxpool layer  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Max\+Pool2d\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,13 +18,57 @@ Inheritance diagram for Max\+Pool2d\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMaxPool2d_ac2d6e1a103079b9bebc9b58420fa1549}\label{classMaxPool2d_ac2d6e1a103079b9bebc9b58420fa1549}} 
-{\bfseries Max\+Pool2d} (\mbox{\hyperlink{classPoolConfigure}{Pool\+Configure}} $\ast$confi)
-\item 
-\mbox{\Hypertarget{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}\label{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries calculate} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classMaxPool2d_ac2d6e1a103079b9bebc9b58420fa1549}{Max\+Pool2d}} (\mbox{\hyperlink{classPoolConfigure}{Pool\+Configure}} $\ast$confi)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}{calculate}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
+\begin{DoxyCompactList}\small\item\em calculate the result of the layer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+maxpool layer 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMaxPool2d_ac2d6e1a103079b9bebc9b58420fa1549}\label{classMaxPool2d_ac2d6e1a103079b9bebc9b58420fa1549}} 
+\index{MaxPool2d@{MaxPool2d}!MaxPool2d@{MaxPool2d}}
+\index{MaxPool2d@{MaxPool2d}!MaxPool2d@{MaxPool2d}}
+\doxysubsubsection{\texorpdfstring{MaxPool2d()}{MaxPool2d()}}
+{\footnotesize\ttfamily Max\+Pool2d\+::\+Max\+Pool2d (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPoolConfigure}{Pool\+Configure}} $\ast$}]{confi }\end{DoxyParamCaption})}
+
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em confi} & pooling parameters \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}\label{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}} 
+\index{MaxPool2d@{MaxPool2d}!calculate@{calculate}}
+\index{calculate@{calculate}!MaxPool2d@{MaxPool2d}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} Max\+Pool2d\+::calculate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+calculate the result of the layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & output of the last layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input of next layer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLayer_a93db894abc31f7b5483d035ffbd57db0}{Layer}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

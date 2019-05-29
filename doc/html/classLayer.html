@@ -70,41 +70,193 @@ $(function() {
 <div class="title">Layer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>base class of different layers.  
+ <a href="classLayer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="layer_8hpp_source.html">layer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Layer:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classLayer.png" usemap="#Layer_map" alt=""/>
   <map id="Layer_map" name="Layer_map">
-<area href="classConv.html" alt="Conv" shape="rect" coords="87,56,164,80"/>
-<area href="classLinear.html" alt="Linear" shape="rect" coords="87,112,164,136"/>
-<area href="classLogSoftmax.html" alt="LogSoftmax" shape="rect" coords="87,168,164,192"/>
-<area href="classMaxPool2d.html" alt="MaxPool2d" shape="rect" coords="87,224,164,248"/>
-<area href="classRelu.html" alt="Relu" shape="rect" coords="87,280,164,304"/>
-<area href="classSigmoid.html" alt="Sigmoid" shape="rect" coords="87,336,164,360"/>
-<area href="classSoftmax.html" alt="Softmax" shape="rect" coords="87,392,164,416"/>
-<area href="classTanh.html" alt="Tanh" shape="rect" coords="87,448,164,472"/>
+<area href="classConv.html" title="convolution layer" alt="Conv" shape="rect" coords="0,56,75,80"/>
+<area href="classLinear.html" title="fully connected layer" alt="Linear" shape="rect" coords="85,56,160,80"/>
+<area href="classMaxPool2d.html" title="maxpool layer" alt="MaxPool2d" shape="rect" coords="170,56,245,80"/>
+<area href="classRelu.html" title="layer for relu calculation" alt="Relu" shape="rect" coords="255,56,330,80"/>
+<area href="classSigmoid.html" title="layer for sigmod calculation" alt="Sigmoid" shape="rect" coords="340,56,415,80"/>
+<area href="classSoftmax.html" title="layer for softmax calculation" alt="Softmax" shape="rect" coords="425,56,500,80"/>
+<area href="classTanh.html" title="layer for tanh calculation" alt="Tanh" shape="rect" coords="510,56,585,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abd221294bb7c6794fcac221607efa92a"><td class="memItemLeft" align="right" valign="top"><a id="abd221294bb7c6794fcac221607efa92a"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
+<tr class="memitem:abd221294bb7c6794fcac221607efa92a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#abd221294bb7c6794fcac221607efa92a">getName</a> ()</td></tr>
+<tr class="memdesc:abd221294bb7c6794fcac221607efa92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the name of layer  <a href="classLayer.html#abd221294bb7c6794fcac221607efa92a">More...</a><br /></td></tr>
 <tr class="separator:abd221294bb7c6794fcac221607efa92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a794fe98edf3d509d69dc42a160ee291f"><td class="memItemLeft" align="right" valign="top"><a id="a794fe98edf3d509d69dc42a160ee291f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setName</b> (string name)</td></tr>
+<tr class="memitem:a794fe98edf3d509d69dc42a160ee291f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a794fe98edf3d509d69dc42a160ee291f">setName</a> (string name)</td></tr>
+<tr class="memdesc:a794fe98edf3d509d69dc42a160ee291f"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the name of layer  <a href="classLayer.html#a794fe98edf3d509d69dc42a160ee291f">More...</a><br /></td></tr>
 <tr class="separator:a794fe98edf3d509d69dc42a160ee291f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93db894abc31f7b5483d035ffbd57db0"><td class="memItemLeft" align="right" valign="top"><a id="a93db894abc31f7b5483d035ffbd57db0"></a>
-virtual <a class="el" href="classTensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>calculate</b> (<a class="el" href="classTensor.html">Tensor</a> &amp;input)=0</td></tr>
+<tr class="memitem:a93db894abc31f7b5483d035ffbd57db0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classTensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a93db894abc31f7b5483d035ffbd57db0">calculate</a> (<a class="el" href="classTensor.html">Tensor</a> &amp;input)=0</td></tr>
+<tr class="memdesc:a93db894abc31f7b5483d035ffbd57db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the result of the layer  <a href="classLayer.html#a93db894abc31f7b5483d035ffbd57db0">More...</a><br /></td></tr>
 <tr class="separator:a93db894abc31f7b5483d035ffbd57db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a43d8c52b1adbf847e306248d2accedf1"><td class="memItemLeft" align="right" valign="top"><a id="a43d8c52b1adbf847e306248d2accedf1"></a>
-static <a class="el" href="classLayer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>creator</b> (int mode, <a class="el" href="classConfigure.html">Configure</a> *c)</td></tr>
+<tr class="memitem:a43d8c52b1adbf847e306248d2accedf1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLayer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a43d8c52b1adbf847e306248d2accedf1">creator</a> (int mode, <a class="el" href="classConfigure.html">Configure</a> *c)</td></tr>
+<tr class="memdesc:a43d8c52b1adbf847e306248d2accedf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method to let the subclass to generate the concerte layer.  <a href="classLayer.html#a43d8c52b1adbf847e306248d2accedf1">More...</a><br /></td></tr>
 <tr class="separator:a43d8c52b1adbf847e306248d2accedf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>base class of different layers. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a93db894abc31f7b5483d035ffbd57db0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93db894abc31f7b5483d035ffbd57db0">&#9670;&nbsp;</a></span>calculate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classTensor.html">Tensor</a> Layer::calculate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classTensor.html">Tensor</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>calculate the result of the layer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>output of the last layer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the input of next layer </dd></dl>
+
+<p>Implemented in <a class="el" href="classSoftmax.html#ac4e743bbc490e45496f574dd3534a468">Softmax</a>, <a class="el" href="classTanh.html#a21f3da119dc4bba9cc324fd09990f535">Tanh</a>, <a class="el" href="classSigmoid.html#aeccf284e115bc73a3c74040fd01acdb2">Sigmoid</a>, <a class="el" href="classRelu.html#aa78ddec1966f20e4b1f9611baae5eefc">Relu</a>, <a class="el" href="classLinear.html#a9cbb0842f699ab81f81fb9c3a62cefc3">Linear</a>, <a class="el" href="classMaxPool2d.html#a35d27c0096a56c8cc8fe5d327f55863a">MaxPool2d</a>, and <a class="el" href="classConv.html#a2124d62c3ab7fba319e7a0a1c759b8fc">Conv</a>.</p>
+
+</div>
+</div>
+<a id="a43d8c52b1adbf847e306248d2accedf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d8c52b1adbf847e306248d2accedf1">&#9670;&nbsp;</a></span>creator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classLayer.html">Layer</a>* Layer::creator </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classConfigure.html">Configure</a> *&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Factory method to let the subclass to generate the concerte layer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>decide which kind of layer to create </td></tr>
+    <tr><td class="paramname">c</td><td>configure needed for the layer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>base type pointer of layer </dd></dl>
+
+</div>
+</div>
+<a id="abd221294bb7c6794fcac221607efa92a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd221294bb7c6794fcac221607efa92a">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Layer::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the name of layer </p>
+<dl class="section return"><dt>Returns</dt><dd>the name of layer </dd></dl>
+
+</div>
+</div>
+<a id="a794fe98edf3d509d69dc42a160ee291f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a794fe98edf3d509d69dc42a160ee291f">&#9670;&nbsp;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Layer::setName </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the name of layer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name you want to call this layer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="layer_8hpp_source.html">layer.hpp</a></li>
 </ul>

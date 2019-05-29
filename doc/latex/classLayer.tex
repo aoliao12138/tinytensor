@@ -1,29 +1,110 @@
 \hypertarget{classLayer}{}\doxysection{Layer Class Reference}
 \label{classLayer}\index{Layer@{Layer}}
+
+
+base class of different layers.  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Layer\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=9.000000cm]{classLayer}
+\includegraphics[height=1.927711cm]{classLayer}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classLayer_abd221294bb7c6794fcac221607efa92a}\label{classLayer_abd221294bb7c6794fcac221607efa92a}} 
-string {\bfseries get\+Name} ()
-\item 
-\mbox{\Hypertarget{classLayer_a794fe98edf3d509d69dc42a160ee291f}\label{classLayer_a794fe98edf3d509d69dc42a160ee291f}} 
-void {\bfseries set\+Name} (string name)
-\item 
-\mbox{\Hypertarget{classLayer_a93db894abc31f7b5483d035ffbd57db0}\label{classLayer_a93db894abc31f7b5483d035ffbd57db0}} 
-virtual \mbox{\hyperlink{classTensor}{Tensor}} {\bfseries calculate} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)=0
-\end{DoxyCompactItemize}
+string \mbox{\hyperlink{classLayer_abd221294bb7c6794fcac221607efa92a}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em get the name of layer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLayer_a794fe98edf3d509d69dc42a160ee291f}{set\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em set the name of layer \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classLayer_a93db894abc31f7b5483d035ffbd57db0}{calculate}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)=0
+\begin{DoxyCompactList}\small\item\em calculate the result of the layer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static \mbox{\hyperlink{classLayer}{Layer}} $\ast$ \mbox{\hyperlink{classLayer_a43d8c52b1adbf847e306248d2accedf1}{creator}} (int mode, \mbox{\hyperlink{classConfigure}{Configure}} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Factory method to let the subclass to generate the concerte layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+base class of different layers. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLayer_a93db894abc31f7b5483d035ffbd57db0}\label{classLayer_a93db894abc31f7b5483d035ffbd57db0}} 
+\index{Layer@{Layer}!calculate@{calculate}}
+\index{calculate@{calculate}!Layer@{Layer}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classTensor}{Tensor}} Layer\+::calculate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+calculate the result of the layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & output of the last layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input of next layer 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSoftmax_ac4e743bbc490e45496f574dd3534a468}{Softmax}}, \mbox{\hyperlink{classTanh_a21f3da119dc4bba9cc324fd09990f535}{Tanh}}, \mbox{\hyperlink{classSigmoid_aeccf284e115bc73a3c74040fd01acdb2}{Sigmoid}}, \mbox{\hyperlink{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}{Relu}}, \mbox{\hyperlink{classLinear_a9cbb0842f699ab81f81fb9c3a62cefc3}{Linear}}, \mbox{\hyperlink{classMaxPool2d_a35d27c0096a56c8cc8fe5d327f55863a}{Max\+Pool2d}}, and \mbox{\hyperlink{classConv_a2124d62c3ab7fba319e7a0a1c759b8fc}{Conv}}.
+
 \mbox{\Hypertarget{classLayer_a43d8c52b1adbf847e306248d2accedf1}\label{classLayer_a43d8c52b1adbf847e306248d2accedf1}} 
-static \mbox{\hyperlink{classLayer}{Layer}} $\ast$ {\bfseries creator} (int mode, \mbox{\hyperlink{classConfigure}{Configure}} $\ast$c)
-\end{DoxyCompactItemize}
+\index{Layer@{Layer}!creator@{creator}}
+\index{creator@{creator}!Layer@{Layer}}
+\doxysubsubsection{\texorpdfstring{creator()}{creator()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classLayer}{Layer}}$\ast$ Layer\+::creator (\begin{DoxyParamCaption}\item[{int}]{mode,  }\item[{\mbox{\hyperlink{classConfigure}{Configure}} $\ast$}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to let the subclass to generate the concerte layer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & decide which kind of layer to create \\
+\hline
+{\em c} & configure needed for the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+base type pointer of layer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLayer_abd221294bb7c6794fcac221607efa92a}\label{classLayer_abd221294bb7c6794fcac221607efa92a}} 
+\index{Layer@{Layer}!getName@{getName}}
+\index{getName@{getName}!Layer@{Layer}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Layer\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the name of layer 
+
+\begin{DoxyReturn}{Returns}
+the name of layer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLayer_a794fe98edf3d509d69dc42a160ee291f}\label{classLayer_a794fe98edf3d509d69dc42a160ee291f}} 
+\index{Layer@{Layer}!setName@{setName}}
+\index{setName@{setName}!Layer@{Layer}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Layer\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+set the name of layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & the name you want to call this layer \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

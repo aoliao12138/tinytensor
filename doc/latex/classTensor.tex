@@ -12,37 +12,139 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTensor_a103cfe7ad32b3be3b62233a03e91bb59}\label{classTensor_a103cfe7ad32b3be3b62233a03e91bb59}} 
-{\bfseries Tensor} (int x=1, int y=1, int z=1)
+\mbox{\hyperlink{classTensor_a103cfe7ad32b3be3b62233a03e91bb59}{Tensor}} (int x=1, int y=1, int z=1)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor_aceda8c608659edfa95c30e156700b3f1}{Tensor}} (int x, int y, int z, double num)
+\begin{DoxyCompactList}\small\item\em Constructor initialized with all the same number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTensor_abbdc262dbacdab592702148051adccd6}{get\+\_\+nx}} ()
 \item 
-\mbox{\Hypertarget{classTensor_aceda8c608659edfa95c30e156700b3f1}\label{classTensor_aceda8c608659edfa95c30e156700b3f1}} 
-{\bfseries Tensor} (int x, int y, int z, double num)
+int \mbox{\hyperlink{classTensor_a048bfa2ded750c3d5fa64da06ea67970}{get\+\_\+ny}} ()
 \item 
-\mbox{\Hypertarget{classTensor_abbdc262dbacdab592702148051adccd6}\label{classTensor_abbdc262dbacdab592702148051adccd6}} 
-int {\bfseries get\+\_\+nx} ()
+int \mbox{\hyperlink{classTensor_a8cb08c77c5aa046a494ad3d9b1e39133}{get\+\_\+nz}} ()
 \item 
-\mbox{\Hypertarget{classTensor_a048bfa2ded750c3d5fa64da06ea67970}\label{classTensor_a048bfa2ded750c3d5fa64da06ea67970}} 
-int {\bfseries get\+\_\+ny} ()
-\item 
-\mbox{\Hypertarget{classTensor_a8cb08c77c5aa046a494ad3d9b1e39133}\label{classTensor_a8cb08c77c5aa046a494ad3d9b1e39133}} 
-int {\bfseries get\+\_\+nz} ()
-\item 
-\mbox{\Hypertarget{classTensor_a7d7f2ee63987997a99b416d9daff81bb}\label{classTensor_a7d7f2ee63987997a99b416d9daff81bb}} 
-void {\bfseries set\+\_\+kernel} (vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \&my\+\_\+kernel)
-\item 
-\mbox{\Hypertarget{classTensor_a529f186fc716793ef22d9361829a1cdc}\label{classTensor_a529f186fc716793ef22d9361829a1cdc}} 
-int {\bfseries max\+\_\+tensor\+\_\+index} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classTensor_a7d7f2ee63987997a99b416d9daff81bb}{set\+\_\+kernel}} (vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \&my\+\_\+kernel)
+\begin{DoxyCompactList}\small\item\em set the data(kernel) of the tensor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTensor_a529f186fc716793ef22d9361829a1cdc}{max\+\_\+tensor\+\_\+index}} ()
+\begin{DoxyCompactList}\small\item\em find the maximal number in the tensor \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classTensor_a16dc268c722d28b8eacc595996dd9b14}\label{classTensor_a16dc268c722d28b8eacc595996dd9b14}} 
-vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ {\bfseries \+\_\+kernel}
+vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \mbox{\hyperlink{classTensor_a16dc268c722d28b8eacc595996dd9b14}{\+\_\+kernel}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{classTensor}{Tensor}} is a basic computation data structure in the neural network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTensor_a103cfe7ad32b3be3b62233a03e91bb59}\label{classTensor_a103cfe7ad32b3be3b62233a03e91bb59}} 
+\index{Tensor@{Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{int}]{x = {\ttfamily 1},  }\item[{int}]{y = {\ttfamily 1},  }\item[{int}]{z = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the dimension of x \\
+\hline
+{\em y} & the dimension of y \\
+\hline
+{\em z} & the dimension of z \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTensor_aceda8c608659edfa95c30e156700b3f1}\label{classTensor_aceda8c608659edfa95c30e156700b3f1}} 
+\index{Tensor@{Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{z,  }\item[{double}]{num }\end{DoxyParamCaption})}
+
+
+
+Constructor initialized with all the same number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the dimension of x \\
+\hline
+{\em y} & the dimension of y \\
+\hline
+{\em z} & the dimension of z \\
+\hline
+{\em num} & all numbers in the tensor are initialized with num \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTensor_abbdc262dbacdab592702148051adccd6}\label{classTensor_abbdc262dbacdab592702148051adccd6}} 
+\index{Tensor@{Tensor}!get\_nx@{get\_nx}}
+\index{get\_nx@{get\_nx}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{get\_nx()}{get\_nx()}}
+{\footnotesize\ttfamily int Tensor\+::get\+\_\+nx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the dimension of x 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTensor_a048bfa2ded750c3d5fa64da06ea67970}\label{classTensor_a048bfa2ded750c3d5fa64da06ea67970}} 
+\index{Tensor@{Tensor}!get\_ny@{get\_ny}}
+\index{get\_ny@{get\_ny}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{get\_ny()}{get\_ny()}}
+{\footnotesize\ttfamily int Tensor\+::get\+\_\+ny (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the dimension of y 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTensor_a8cb08c77c5aa046a494ad3d9b1e39133}\label{classTensor_a8cb08c77c5aa046a494ad3d9b1e39133}} 
+\index{Tensor@{Tensor}!get\_nz@{get\_nz}}
+\index{get\_nz@{get\_nz}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{get\_nz()}{get\_nz()}}
+{\footnotesize\ttfamily int Tensor\+::get\+\_\+nz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the dimension of z 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTensor_a529f186fc716793ef22d9361829a1cdc}\label{classTensor_a529f186fc716793ef22d9361829a1cdc}} 
+\index{Tensor@{Tensor}!max\_tensor\_index@{max\_tensor\_index}}
+\index{max\_tensor\_index@{max\_tensor\_index}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{max\_tensor\_index()}{max\_tensor\_index()}}
+{\footnotesize\ttfamily int Tensor\+::max\+\_\+tensor\+\_\+index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+find the maximal number in the tensor 
+
+\begin{DoxyReturn}{Returns}
+the index of the maximal number in the tensor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTensor_a7d7f2ee63987997a99b416d9daff81bb}\label{classTensor_a7d7f2ee63987997a99b416d9daff81bb}} 
+\index{Tensor@{Tensor}!set\_kernel@{set\_kernel}}
+\index{set\_kernel@{set\_kernel}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{set\_kernel()}{set\_kernel()}}
+{\footnotesize\ttfamily void Tensor\+::set\+\_\+kernel (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ vector$<$ double $>$ $>$ $>$ \&}]{my\+\_\+kernel }\end{DoxyParamCaption})}
+
+
+
+set the data(kernel) of the tensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+kernel} & the data of the tensor \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTensor_a16dc268c722d28b8eacc595996dd9b14}\label{classTensor_a16dc268c722d28b8eacc595996dd9b14}} 
+\index{Tensor@{Tensor}!\_kernel@{\_kernel}}
+\index{\_kernel@{\_kernel}!Tensor@{Tensor}}
+\doxysubsubsection{\texorpdfstring{\_kernel}{\_kernel}}
+{\footnotesize\ttfamily vector$<$vector$<$vector$<$double$>$ $>$ $>$ Tensor\+::\+\_\+kernel}
+
+data in the tensor 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

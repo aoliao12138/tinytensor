@@ -1,5 +1,14 @@
 \hypertarget{classSoftmax}{}\doxysection{Softmax Class Reference}
 \label{classSoftmax}\index{Softmax@{Softmax}}
+
+
+layer for softmax calculation  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Softmax\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,10 +18,40 @@ Inheritance diagram for Softmax\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSoftmax_ac4e743bbc490e45496f574dd3534a468}\label{classSoftmax_ac4e743bbc490e45496f574dd3534a468}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries calculate} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classSoftmax_a884f7236004c14ed1b057b8e84f10861}\label{classSoftmax_a884f7236004c14ed1b057b8e84f10861}} 
+\mbox{\hyperlink{classSoftmax_a884f7236004c14ed1b057b8e84f10861}{Softmax}} ()
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classSoftmax_ac4e743bbc490e45496f574dd3534a468}{calculate}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
+\begin{DoxyCompactList}\small\item\em calculate the result of the layer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+layer for softmax calculation 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSoftmax_ac4e743bbc490e45496f574dd3534a468}\label{classSoftmax_ac4e743bbc490e45496f574dd3534a468}} 
+\index{Softmax@{Softmax}!calculate@{calculate}}
+\index{calculate@{calculate}!Softmax@{Softmax}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} Softmax\+::calculate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+calculate the result of the layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & output of the last layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input of next layer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLayer_a93db894abc31f7b5483d035ffbd57db0}{Layer}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

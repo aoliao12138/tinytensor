@@ -33,10 +33,18 @@ MNISTData load_training_data(string & training_directory);
 
 MNISTData load_test_data(string & test_directory);
 
-// vector<Tensor> dataloader(string & datapath);
-
+/**
+ * @brief load MNIST images and labels
+ * @param datapath the file path for mnist dataset
+ * @param labels the labels for each picture
+ * @return picture vector, each picture is a tensor
+ */
 vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
 
-Network load_weights();
+/**
+ * @brief load Lenet5 pretrain model
+ * @return lenet5 network structure
+ */
+Network load_Lenet_weights();
 
 #endif //TINYTENSOR_DATALOADER_HPP

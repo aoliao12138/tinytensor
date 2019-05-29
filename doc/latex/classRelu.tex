@@ -1,5 +1,14 @@
 \hypertarget{classRelu}{}\doxysection{Relu Class Reference}
 \label{classRelu}\index{Relu@{Relu}}
+
+
+layer for relu calculation  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Relu\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,10 +18,40 @@ Inheritance diagram for Relu\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}\label{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries calculate} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classRelu_ade6da5fa61d942a8f50d661dc997a985}\label{classRelu_ade6da5fa61d942a8f50d661dc997a985}} 
+\mbox{\hyperlink{classRelu_ade6da5fa61d942a8f50d661dc997a985}{Relu}} ()
+\begin{DoxyCompactList}\small\item\em constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}{calculate}} (\mbox{\hyperlink{classTensor}{Tensor}} \&input)
+\begin{DoxyCompactList}\small\item\em calculate the result of the layer \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+layer for relu calculation 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}\label{classRelu_aa78ddec1966f20e4b1f9611baae5eefc}} 
+\index{Relu@{Relu}!calculate@{calculate}}
+\index{calculate@{calculate}!Relu@{Relu}}
+\doxysubsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} Relu\+::calculate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTensor}{Tensor}} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+calculate the result of the layer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & output of the last layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the input of next layer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLayer_a93db894abc31f7b5483d035ffbd57db0}{Layer}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

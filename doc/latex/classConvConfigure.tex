@@ -1,5 +1,14 @@
 \hypertarget{classConvConfigure}{}\doxysection{Conv\+Configure Class Reference}
 \label{classConvConfigure}\index{ConvConfigure@{ConvConfigure}}
+
+
+Configures for a convolution layer.  
+
+
+
+
+{\ttfamily \#include $<$layer.\+hpp$>$}
+
 Inheritance diagram for Conv\+Configure\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,9 +18,8 @@ Inheritance diagram for Conv\+Configure\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classConvConfigure_a81424987eec3b1f1292cc126e4bdbe96}\label{classConvConfigure_a81424987eec3b1f1292cc126e4bdbe96}} 
-{\bfseries Conv\+Configure} (int input\+\_\+channels, int output\+\_\+channels, int kernel\+\_\+size, vector$<$ double $>$ bias, int stride=1, int padding=0)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classConvConfigure_a81424987eec3b1f1292cc126e4bdbe96}{Conv\+Configure}} (int input\+\_\+channels, int output\+\_\+channels, int kernel\+\_\+size, vector$<$ double $>$ bias, int stride=1, int padding=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,6 +41,37 @@ int {\bfseries \+\_\+padding}
 \mbox{\Hypertarget{classConvConfigure_a1036d804d2971ecbe616ea975f6ebbd5}\label{classConvConfigure_a1036d804d2971ecbe616ea975f6ebbd5}} 
 vector$<$ double $>$ {\bfseries \+\_\+bias}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configures for a convolution layer. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConvConfigure_a81424987eec3b1f1292cc126e4bdbe96}\label{classConvConfigure_a81424987eec3b1f1292cc126e4bdbe96}} 
+\index{ConvConfigure@{ConvConfigure}!ConvConfigure@{ConvConfigure}}
+\index{ConvConfigure@{ConvConfigure}!ConvConfigure@{ConvConfigure}}
+\doxysubsubsection{\texorpdfstring{ConvConfigure()}{ConvConfigure()}}
+{\footnotesize\ttfamily Conv\+Configure\+::\+Conv\+Configure (\begin{DoxyParamCaption}\item[{int}]{input\+\_\+channels,  }\item[{int}]{output\+\_\+channels,  }\item[{int}]{kernel\+\_\+size,  }\item[{vector$<$ double $>$}]{bias,  }\item[{int}]{stride = {\ttfamily 1},  }\item[{int}]{padding = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+channels} & input channels of convolution layer \\
+\hline
+{\em output\+\_\+channels} & output channels of convolution layer \\
+\hline
+{\em kernel\+\_\+size} & kernel size of the convolution \\
+\hline
+{\em bias} & bias of each output channel \\
+\hline
+{\em stride} & controls the stride for the cross-\/correlation \\
+\hline
+{\em padding} & controls the amount of zero-\/paddings of the image \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
