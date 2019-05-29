@@ -8,7 +8,7 @@
 #define LINEAR 1
 #define POOL 2
 #define RELU 3
-#define SIGMOD 4
+#define SIGMOID 4
 #define TANH 5
 #define SOFTMAX 6
 

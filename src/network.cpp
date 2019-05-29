@@ -6,3 +6,9 @@ Tensor Network::eval(Tensor &input) {
     }
     return input;
 }
+
+Network::~Network() {
+    for (int i = 0; i < layers.size() ; ++i) {
+        delete(layers[i]);
+    }
+}

@@ -1,5 +1,6 @@
 #include "layer.hpp"
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -28,6 +29,12 @@ Layer* Layer::creator(int mode, Configure *c) {
         return new MaxPool2d(confi);
     }else if (mode == 3){
         return new Relu();
+    }else if (mode == 4){
+        return new Sigmoid();
+    }else if (mode == 5){
+        return new Tanh();
+    }else if (mode == 6){
+        return new Softmax();
     }
 }
 
@@ -62,6 +69,17 @@ Relu::Relu() {
     setName("Relu");
 }
 
+Sigmoid::Sigmoid() {
+    setName("Sigmod");
+}
+
+Tanh::Tanh() {
+    setName("Tanh");
+}
+
+Softmax::Softmax() {
+    setName("Softmax");
+}
 
 Tensor Conv::calculate(Tensor &input) {
     int result_nx = (input.get_nx() + 2 * _confi._padding - _confi._kernel_size) / _confi._stride + 1;
@@ -153,7 +171,6 @@ Tensor Linear::calculate(Tensor &input) {
         }
         return result;
     } else{
-        //tmpy=1;
         for (int i = 0; i < _confi._output; ++i) {
             result._kernel[0][0][i]=_confi._bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
@@ -165,13 +182,47 @@ Tensor Linear::calculate(Tensor &input) {
 }
 
 Tensor Relu::calculate(Tensor &input) {
-    //Tensor result(input.get_nx(),input.get_ny(),input.get_nz(),0);
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <input.get_ny() ; ++j) {
             for (int k = 0; k <input.get_nx() ; ++k) {
                 input._kernel[i][j][k] = max(0.0, input._kernel[i][j][k]);
             }
         }
+    }
+    return input;
+}
+
+Tensor Sigmoid::calculate(Tensor &input) {
+    for (int i = 0; i <input.get_nz() ; ++i) {
+        for (int j = 0; j <input.get_ny() ; ++j) {
+            for (int k = 0; k <input.get_nx() ; ++k) {
+                input._kernel[i][j][k] = 1/(1+exp(-input._kernel[i][j][k]));
+            }
+        }
+    }
+    return input;
+}
+
+Tensor Tanh::calculate(Tensor &input) {
+    for (int i = 0; i <input.get_nz() ; ++i) {
+        for (int j = 0; j <input.get_ny() ; ++j) {
+            for (int k = 0; k <input.get_nx() ; ++k) {
+                input._kernel[i][j][k] = (exp(input._kernel[i][j][k])-exp(-input._kernel[i][j][k]))
+                                        /(exp(input._kernel[i][j][k])+exp(-input._kernel[i][j][k]));
+            }
+        }
+    }
+    return input;
+}
+
+Tensor Softmax::calculate(Tensor &input) {
+    //1 dimensional
+    double sum=0;
+    for (int i = 0; i <input.get_nx() ; ++i) {
+        sum+=exp(input._kernel[0][0][i]);
+    }
+    for (int j = 0; j <input.get_nx() ; ++j) {
+        input._kernel[0][0][j]=exp(input._kernel[0][0][j])/sum;
     }
     return input;
 }

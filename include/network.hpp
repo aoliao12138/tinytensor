@@ -12,6 +12,10 @@ using namespace std;
 class Network{
 public:
     /**
+     * @brief destructor
+     */
+    ~Network();
+    /**
      * @brief Add a layer for the neural network
      * @param l A concrete layer pointer inherit from Layer class
      */
