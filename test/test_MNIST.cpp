@@ -17,7 +17,7 @@ int main(){
 
     double correct=0;
 
-    int num=100;
+    int num=10000;
 
     for (int i = 0; i <num ; ++i) {
         Tensor result=Lenet5.eval(images[i]);

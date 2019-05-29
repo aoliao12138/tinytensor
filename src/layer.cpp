@@ -146,7 +146,7 @@ Tensor Linear::calculate(Tensor &input) {
             for (int i = 0; i < tmpz; ++i) {
                 for (int j = 0; j < tmpy; ++j) {
                     for (int k = 0; k < tmpx; ++k) {
-                        result._kernel[0][0][l] += input._kernel[i][j][k] * weights._kernel[0][l][k+tmpx*j+tmpy*i];
+                        result._kernel[0][0][l] += input._kernel[i][j][k] * weights._kernel[0][l][k+tmpx*j+tmpy*tmpx*i];
                     }
                 }
             }
