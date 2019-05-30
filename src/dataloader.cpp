@@ -19,7 +19,6 @@ MNISTData::MNISTData(FILE* images, FILE* labels) {
     endianSwap(magic_number);
     fread(&num_images, sizeof(int), 1, images);
     endianSwap(num_images);
-    cout << "Number of images: " << num_images << endl;
     fread(&rows, sizeof(int), 1, images);
     fread(&columns, sizeof(int), 1, images);
     fread(&magic_number, sizeof(int), 1, labels);
@@ -121,13 +120,10 @@ MNISTData load_test_data(string & test_directory) {
 vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
     std::vector<Tensor> result;
     MNISTData test = load_test_data(datapath);
-    cout << test.getSize() << endl;
     for (int i = 0; i < test.getSize(); ++i) {
         result.push_back(test[i]);
         labels.push_back(test.label(i));
     }
-    cout << "result size: " << result.size() << endl;
-    cout << "label size: " << labels.size() << endl;
     return result;
 
 }

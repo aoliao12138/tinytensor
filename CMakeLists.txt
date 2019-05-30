@@ -14,4 +14,7 @@ set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp src/dataloader.
 add_library( tinytensor_lib ${TINYTENSOR_SRC} )
 
 ADD_EXECUTABLE( test_mnist test/test_MNIST.cpp )
+ADD_EXECUTABLE( live_demo test/live_demo.cpp )
+
 TARGET_LINK_LIBRARIES( test_mnist tinytensor_lib )
+TARGET_LINK_LIBRARIES( live_demo tinytensor_lib )
