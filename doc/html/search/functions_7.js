@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['relu',['Relu',['../classRelu.html#ade6da5fa61d942a8f50d661dc997a985',1,'Relu']]]
+  ['poolconfigure',['PoolConfigure',['../classPoolConfigure.html#a1a9840de953c2260af96846755c6540a',1,'PoolConfigure']]]
 ];

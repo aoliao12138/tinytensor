@@ -15,7 +15,7 @@ public:
    * @param y the dimension of y
    * @param z the dimension of z
    */
-    Tensor(int x=1, int y=1, int z=1);
+    Tensor(int x = 1, int y = 1, int z = 1);
     /**
    * @brief Constructor initialized with all the same number.
    * @param x the dimension of x
@@ -23,7 +23,7 @@ public:
    * @param z the dimension of z
    * @param num all numbers in the tensor are initialized with num
    */
-    Tensor(int x, int y, int z,double num);
+    Tensor(int x, int y, int z, double num);
     /**
      *
      * @return the dimension of x
@@ -43,7 +43,7 @@ public:
      * @brief set the data(kernel) of the tensor.
      * @param my_kernel the data of the tensor
      */
-    void set_kernel(vector<vector<vector<double> > > & my_kernel);
+    void set_kernel(vector<vector<vector<double> > > &my_kernel);
     /**
      * @brief find the maximal number in the tensor
      * @return the index of the maximal number in the tensor

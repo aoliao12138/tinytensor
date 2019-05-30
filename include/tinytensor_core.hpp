@@ -5,7 +5,6 @@
 //for all the includes
 #include "tensor.hpp"
 #include "dataloader.hpp"
-
 #include "network.hpp"
 
 #endif //TINYTENSOR_TINYTENSOR_HPP

@@ -1,12 +1,12 @@
 #include "dataloader.hpp"
 #include "para.hpp"
 
-unsigned int& endianSwap(unsigned int &x) {
-    x = (x>>24)|((x<<8)&0x00FF0000)|((x>>8)&0x0000FF00)|(x<<24);
+unsigned int &endianSwap(unsigned int &x) {
+    x = (x >> 24) | ((x << 8) & 0x00FF0000) | ((x >> 8) & 0x0000FF00) | (x << 24);
     return x;
 }
 
-MNISTData::MNISTData(FILE* images, FILE* labels) {
+MNISTData::MNISTData(FILE *images, FILE *labels) {
     unsigned int magic_number = 0;
     unsigned int num_images = 0;
     unsigned int num_labels = 0;
@@ -50,32 +50,32 @@ MNISTData::~MNISTData() {}
 
 void MNISTData::show(int index) {
     int pixel_count = 0;
-    for (auto pixel : _images[index]) {
+    for (auto pixel: _images[index]) {
         if (pixel_count % 28 == 0) cout << endl;
             if (pixel >= 1) {
                 cout << "* ";
             } else {
                 cout << "0 ";
             }
-        pixel_count ++;
+        pixel_count++;
     }
     cout << endl;
     cout << "the label is: " << _labels[index] << endl;
 }
 
-Tensor MNISTData::operator[] (int index) {
+Tensor MNISTData::operator[](int index) {
     Tensor result = Tensor(28, 28, 1);
     std::vector<std::vector<std::vector<double> > > kernel_vec;
     std::vector<std::vector<double> > image;
     std::vector<double> row;
     int pixel_count = 0;
-    for (auto pixel : _images[index]) {
+    for (auto pixel: _images[index]) {
         if (pixel_count % 28 == 0 && row.size() == 28) {
             image.push_back(row);
             row.clear();
         }
         row.push_back(pixel);
-        pixel_count ++;
+        pixel_count++;
     }
     image.push_back(row);
     kernel_vec.push_back(image);
@@ -95,29 +95,29 @@ int MNISTData::getSize() {
 }
 
 
-MNISTData load_training_data(string & training_directory) {
+MNISTData load_training_data(string &training_directory) {
     string image_location_str = training_directory + "/train-images.idx3-ubyte";
     string label_location_str = training_directory + "/train-labels.idx1-ubyte";
-    const char * image_location = image_location_str.c_str();
-    const char * label_location = label_location_str.c_str();
-    FILE * training_images = fopen(image_location, "r");
-    FILE * training_labels = fopen(label_location, "r");
+    const char *image_location = image_location_str.c_str();
+    const char *label_location = label_location_str.c_str();
+    FILE *training_images = fopen(image_location, "r");
+    FILE *training_labels = fopen(label_location, "r");
     MNISTData training = MNISTData(training_images, training_labels);
     return training;
 }
 
-MNISTData load_test_data(string & test_directory) {
+MNISTData load_test_data(string &test_directory) {
     string image_location_str = test_directory + "/t10k-images.idx3-ubyte";
     string label_location_str = test_directory + "/t10k-labels.idx1-ubyte";
-    const char * image_location = image_location_str.c_str();
-    const char * label_location = label_location_str.c_str();
-    FILE * test_images = fopen(image_location, "r");
-    FILE * test_labels = fopen(label_location, "r");
+    const char *image_location = image_location_str.c_str();
+    const char *label_location = label_location_str.c_str();
+    FILE *test_images = fopen(image_location, "r");
+    FILE *test_labels = fopen(label_location, "r");
     MNISTData test = MNISTData(test_images, test_labels);
     return test;
 }
 
-vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
+vector<Tensor> load_MNIST(string & datapath, vector<int> &labels) {
     std::vector<Tensor> result;
     MNISTData test = load_test_data(datapath);
     for (int i = 0; i < test.getSize(); ++i) {
@@ -132,33 +132,33 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> & labels) {
 Network load_Lenet_weights() {
     Network net;
 
-    ConvConfigure c1(1,6,5,parameters_2,1,2);
-    Layer * L1 = Layer::creator(CONV, &c1);
-    Conv * conv1=dynamic_cast<Conv *>(L1);
+    ConvConfigure c1(1, 6, 5, parameters_2, 1, 2);
+    Layer *L1 = Layer::creator(CONV, &c1);
+    Conv *conv1 = dynamic_cast<Conv *>(L1);
     vector<Tensor> k1;
-    for (int i = 0; i <parameters_1.size() ; ++i) {
-        Tensor tmp=Tensor(5,5,1);
+    for (int i = 0; i <parameters_1.size(); ++i) {
+        Tensor tmp=Tensor(5, 5, 1);
         tmp.set_kernel(parameters_1[i]);
         k1.push_back(tmp);
     }
     conv1->setkernel(k1);
     net.add_layer(L1);
 
-    Layer * L2 = Layer::creator(RELU, nullptr);
+    Layer *L2 = Layer::creator(RELU, nullptr);
     net.add_layer(L2);
 
-    PoolConfigure p1(2,2);
+    PoolConfigure p1(2, 2);
 
-    Layer * L3 = Layer::creator(POOL, &p1);
+    Layer *L3 = Layer::creator(POOL, &p1);
     net.add_layer(L3);
 
-    ConvConfigure c2(6,16,5,parameters_4);
-    Layer * L4 = Layer::creator(CONV, &c2);
+    ConvConfigure c2(6, 16, 5, parameters_4);
+    Layer *L4 = Layer::creator(CONV, &c2);
 
-    Conv* conv2=dynamic_cast<Conv* >(L4);
+    Conv *conv2=dynamic_cast<Conv *>(L4);
     vector<Tensor> k4;
-    for (int i = 0; i <parameters_3.size() ; ++i) {
-        Tensor tmp=Tensor(5,5,6);
+    for (int i = 0; i <parameters_3.size(); ++i) {
+        Tensor tmp = Tensor(5, 5, 6);
         tmp.set_kernel(parameters_3[i]);
         k4.push_back(tmp);
     }
@@ -166,43 +166,43 @@ Network load_Lenet_weights() {
 
     net.add_layer(L4);
 
-    Layer * L5 = Layer::creator(RELU, nullptr);
+    Layer *L5 = Layer::creator(RELU, nullptr);
     net.add_layer(L5);
 
-    PoolConfigure p2(2,2);
+    PoolConfigure p2(2, 2);
 
-    Layer * L6 = Layer::creator(POOL, &p2);
+    Layer *L6 = Layer::creator(POOL, &p2);
     net.add_layer(L6);
 
-    LinearConfigure l1(16*5*5,120,parameters_6);
+    LinearConfigure l1(16*5*5, 120, parameters_6);
 
-    Layer * L7 = Layer::creator(LINEAR, &l1);
+    Layer *L7 = Layer::creator(LINEAR, &l1);
 
-    Linear* line1= dynamic_cast<Linear*>(L7);
+    Linear *line1 = dynamic_cast<Linear*>(L7);
     line1->setkernel(parameters_5);
 
     net.add_layer(L7);
 
-    Layer * L8 = Layer::creator(RELU, nullptr);
+    Layer *L8 = Layer::creator(RELU, nullptr);
     net.add_layer(L8);
 
-    LinearConfigure l2(120,84,parameters_8);
+    LinearConfigure l2(120, 84, parameters_8);
 
-    Layer * L9 = Layer::creator(LINEAR, &l2);
+    Layer *L9 = Layer::creator(LINEAR, &l2);
 
-    Linear* line2= dynamic_cast<Linear*>(L9);
+    Linear *line2= dynamic_cast<Linear*>(L9);
     line2->setkernel(parameters_7);
 
     net.add_layer(L9);
 
-    Layer * L10 = Layer::creator(RELU, nullptr);
+    Layer *L10 = Layer::creator(RELU, nullptr);
     net.add_layer(L10);
 
-    LinearConfigure l3(84,10,parameters_10);
+    LinearConfigure l3(84, 10, parameters_10);
 
-    Layer * L11 = Layer::creator(LINEAR, &l3);
+    Layer *L11 = Layer::creator(LINEAR, &l3);
 
-    Linear* line3= dynamic_cast<Linear*>(L11);
+    Linear *line3 = dynamic_cast<Linear*>(L11);
     line3->setkernel(parameters_9);
 
     net.add_layer(L11);

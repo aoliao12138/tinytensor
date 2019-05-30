@@ -2,17 +2,17 @@
 #include <vector>
 using namespace std;
 
-Tensor::Tensor(int x, int y, int z) :
+Tensor::Tensor(int x, int y, int z):
         _nx(x),_ny(y),_nz(z) {
 }
 
-Tensor::Tensor(int x, int y, int z,double num) :
+Tensor::Tensor(int x, int y, int z, double num):
         _nx(x),_ny(y),_nz(z) {
     vector<vector<vector<double > > > k;
     for (int i = 0; i < _nz; ++i) {
         vector<vector<double> > m;
         for (int j = 0; j < _ny; ++j) {
-            vector<double> v(_nx,num);
+            vector<double> v(_nx, num);
             m.push_back(v);
         }
         k.push_back(m);
@@ -22,14 +22,14 @@ Tensor::Tensor(int x, int y, int z,double num) :
 }
 
 int Tensor::max_tensor_index() {
-    double tmp=_kernel[0][0][0];
-    int index=0;
-    for (int i = 0; i <_nz ; ++i) {
-        for (int j = 0; j < _ny ; ++j) {
+    double tmp = _kernel[0][0][0];
+    int index = 0;
+    for (int i = 0; i <_nz; ++i) {
+        for (int j = 0; j < _ny; ++j) {
             for (int k = 0; k < _nx; ++k) {
-                if (_kernel[i][j][k]>tmp){
-                    tmp=_kernel[i][j][k];
-                    index=k;
+                if (_kernel[i][j][k] > tmp){
+                    tmp = _kernel[i][j][k];
+                    index = k;
                 }
             }
         }

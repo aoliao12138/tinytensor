@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['tanh',['Tanh',['../classTanh.html',1,'Tanh'],['../classTanh.html#a3eb6fd350c923b4ceef0b6dbe3f690d8',1,'Tanh::Tanh()']]],
-  ['tensor',['Tensor',['../classTensor.html',1,'Tensor'],['../classTensor.html#a103cfe7ad32b3be3b62233a03e91bb59',1,'Tensor::Tensor(int x=1, int y=1, int z=1)'],['../classTensor.html#aceda8c608659edfa95c30e156700b3f1',1,'Tensor::Tensor(int x, int y, int z, double num)']]]
+  ['set_5fkernel',['set_kernel',['../classTensor.html#a7d7f2ee63987997a99b416d9daff81bb',1,'Tensor']]],
+  ['setkernel',['setkernel',['../classConv.html#acf444addf6b70ea8eff6e7b91c53628f',1,'Conv::setkernel()'],['../classLinear.html#a2c32d82b3507d8c27db951e097a50416',1,'Linear::setkernel()']]],
+  ['setname',['setName',['../classLayer.html#a794fe98edf3d509d69dc42a160ee291f',1,'Layer']]],
+  ['show',['show',['../classMNISTData.html#aa904b253865d8b75b84ed65694fad0da',1,'MNISTData']]],
+  ['sigmoid',['Sigmoid',['../classSigmoid.html',1,'Sigmoid'],['../classSigmoid.html#af871f2160541f3aa75558900cae467ba',1,'Sigmoid::Sigmoid()']]],
+  ['softmax',['Softmax',['../classSoftmax.html',1,'Softmax'],['../classSoftmax.html#a884f7236004c14ed1b057b8e84f10861',1,'Softmax::Softmax()']]]
 ];

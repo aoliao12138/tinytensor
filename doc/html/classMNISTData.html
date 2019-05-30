@@ -69,25 +69,175 @@ $(function() {
 <div class="title">MNISTData Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>the encapsulation of MNIST Data  
+ <a href="classMNISTData.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="dataloader_8hpp_source.html">dataloader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ff4019ad169378848f7dea4668239b5"><td class="memItemLeft" align="right" valign="top"><a id="a4ff4019ad169378848f7dea4668239b5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MNISTData</b> (FILE *images, FILE *labels)</td></tr>
+<tr class="memitem:a4ff4019ad169378848f7dea4668239b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#a4ff4019ad169378848f7dea4668239b5">MNISTData</a> (FILE *images, FILE *labels)</td></tr>
+<tr class="memdesc:a4ff4019ad169378848f7dea4668239b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the constructor of <a class="el" href="classMNISTData.html" title="the encapsulation of MNIST Data">MNISTData</a>  <a href="classMNISTData.html#a4ff4019ad169378848f7dea4668239b5">More...</a><br /></td></tr>
 <tr class="separator:a4ff4019ad169378848f7dea4668239b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa904b253865d8b75b84ed65694fad0da"><td class="memItemLeft" align="right" valign="top"><a id="aa904b253865d8b75b84ed65694fad0da"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> (int index)</td></tr>
+<tr class="memitem:acd3b3d5fc5b9ea3355d802aced7028fa"><td class="memItemLeft" align="right" valign="top"><a id="acd3b3d5fc5b9ea3355d802aced7028fa"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#acd3b3d5fc5b9ea3355d802aced7028fa">~MNISTData</a> ()</td></tr>
+<tr class="memdesc:acd3b3d5fc5b9ea3355d802aced7028fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">deconstructor <br /></td></tr>
+<tr class="separator:acd3b3d5fc5b9ea3355d802aced7028fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa904b253865d8b75b84ed65694fad0da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#aa904b253865d8b75b84ed65694fad0da">show</a> (int index)</td></tr>
+<tr class="memdesc:aa904b253865d8b75b84ed65694fad0da"><td class="mdescLeft">&#160;</td><td class="mdescRight">print the selected image on screeen  <a href="classMNISTData.html#aa904b253865d8b75b84ed65694fad0da">More...</a><br /></td></tr>
 <tr class="separator:aa904b253865d8b75b84ed65694fad0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c427c48461fff117180ff3f6c89ce64"><td class="memItemLeft" align="right" valign="top"><a id="a7c427c48461fff117180ff3f6c89ce64"></a>
-<a class="el" href="classTensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int index)</td></tr>
+<tr class="memitem:a7c427c48461fff117180ff3f6c89ce64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#a7c427c48461fff117180ff3f6c89ce64">operator[]</a> (int index)</td></tr>
+<tr class="memdesc:a7c427c48461fff117180ff3f6c89ce64"><td class="mdescLeft">&#160;</td><td class="mdescRight">selected the wanted image  <a href="classMNISTData.html#a7c427c48461fff117180ff3f6c89ce64">More...</a><br /></td></tr>
 <tr class="separator:a7c427c48461fff117180ff3f6c89ce64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a087086e85802093365784084d999f859"><td class="memItemLeft" align="right" valign="top"><a id="a087086e85802093365784084d999f859"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>label</b> (int index)</td></tr>
+<tr class="memitem:a087086e85802093365784084d999f859"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#a087086e85802093365784084d999f859">label</a> (int index)</td></tr>
+<tr class="memdesc:a087086e85802093365784084d999f859"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the label of certained image  <a href="classMNISTData.html#a087086e85802093365784084d999f859">More...</a><br /></td></tr>
 <tr class="separator:a087086e85802093365784084d999f859"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56e194e3291c40cca9d13b2f95e98a73"><td class="memItemLeft" align="right" valign="top"><a id="a56e194e3291c40cca9d13b2f95e98a73"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> ()</td></tr>
+<tr class="memitem:a56e194e3291c40cca9d13b2f95e98a73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMNISTData.html#a56e194e3291c40cca9d13b2f95e98a73">getSize</a> ()</td></tr>
+<tr class="memdesc:a56e194e3291c40cca9d13b2f95e98a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the size of the <a class="el" href="classMNISTData.html" title="the encapsulation of MNIST Data">MNISTData</a>  <a href="classMNISTData.html#a56e194e3291c40cca9d13b2f95e98a73">More...</a><br /></td></tr>
 <tr class="separator:a56e194e3291c40cca9d13b2f95e98a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>the encapsulation of MNIST Data </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4ff4019ad169378848f7dea4668239b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ff4019ad169378848f7dea4668239b5">&#9670;&nbsp;</a></span>MNISTData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MNISTData::MNISTData </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>images</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>labels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the constructor of <a class="el" href="classMNISTData.html" title="the encapsulation of MNIST Data">MNISTData</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">images</td><td>the compressed images </td></tr>
+    <tr><td class="paramname">labels</td><td>the compressed labels </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56e194e3291c40cca9d13b2f95e98a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e194e3291c40cca9d13b2f95e98a73">&#9670;&nbsp;</a></span>getSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MNISTData::getSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the size of the <a class="el" href="classMNISTData.html" title="the encapsulation of MNIST Data">MNISTData</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>number of images in the <a class="el" href="classMNISTData.html" title="the encapsulation of MNIST Data">MNISTData</a> instance </dd></dl>
+
+</div>
+</div>
+<a id="a087086e85802093365784084d999f859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087086e85802093365784084d999f859">&#9670;&nbsp;</a></span>label()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MNISTData::label </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the label of certained image </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>the index of the wanted image </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the label of the wanted image </dd></dl>
+
+</div>
+</div>
+<a id="a7c427c48461fff117180ff3f6c89ce64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c427c48461fff117180ff3f6c89ce64">&#9670;&nbsp;</a></span>operator[]()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classTensor.html">Tensor</a> MNISTData::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>selected the wanted image </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>the index of the wanted image </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a tensor contained the wanted image </dd></dl>
+
+</div>
+</div>
+<a id="aa904b253865d8b75b84ed65694fad0da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa904b253865d8b75b84ed65694fad0da">&#9670;&nbsp;</a></span>show()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MNISTData::show </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>print the selected image on screeen </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>the index of the wanted image </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="dataloader_8hpp_source.html">dataloader.hpp</a></li>
 </ul>

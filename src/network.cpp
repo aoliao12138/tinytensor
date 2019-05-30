@@ -1,14 +1,14 @@
 #include "network.hpp"
 
 Tensor Network::eval(Tensor &input) {
-    for (int i = 0; i < layers.size() ; ++i) {
-        input=layers[i]->calculate(input);
+    for (int i = 0; i < _layers.size(); ++i) {
+        input = _layers[i]->calculate(input);
     }
     return input;
 }
 
 Network::~Network() {
-    for (int i = 0; i < layers.size() ; ++i) {
-        delete(layers[i]);
+    for (int i = 0; i < _layers.size(); ++i) {
+        delete(_layers[i]);
     }
 }

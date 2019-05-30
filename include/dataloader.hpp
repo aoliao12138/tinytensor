@@ -1,12 +1,12 @@
 #ifndef TINYTENSOR_DATALOADER_HPP
 #define TINYTENSOR_DATALOADER_HPP
 
-#include <string>
-#include <cstdio>
-#include <iostream>
 #include "tensor.hpp"
 #include "network.hpp"
 #include "layer.hpp"
+#include <string>
+#include <cstdio>
+#include <iostream>
 
 using namespace std;
 
@@ -21,7 +21,7 @@ public:
 	 * @param images the compressed images
 	 * @param labels the compressed labels
 	 */
-	MNISTData(FILE* images, FILE* labels);
+	MNISTData(FILE *images, FILE *labels);
 	/**
 	 * @brief deconstructor
 	 */
@@ -36,7 +36,7 @@ public:
 	 * @param index the index of the wanted image
 	 * @return a tensor contained the wanted image
 	 */
-	Tensor operator[] (int index);
+	Tensor operator[](int index);
 	/**
 	 * @brief get the label of certained image
 	 * @param index the index of the wanted image
@@ -76,21 +76,21 @@ private:
  * @param x the integar we want to change
  * @return the changed endian number
  */
-unsigned int& endianSwap(unsigned int &x);
+unsigned int &endianSwap(unsigned int &x);
 
 /**
  * @brief load the training data from MNIST
  * @param training_directory the path to the MNIST directory
  * @return a MNISTData class contained all the images and labels of the training set
  */
-MNISTData load_training_data(string & training_directory);
+MNISTData load_training_data(string &training_directory);
 
 /**
  * @brief load the test data from MNIST
  * @param test_directory the path to the MNIST directory
  * @return a MNISTData class contained all the images and labels of the test set
  */
-MNISTData load_test_data(string & test_directory);
+MNISTData load_test_data(string &test_directory);
 
 /**
  * @brief load MNIST images and labels
@@ -98,7 +98,7 @@ MNISTData load_test_data(string & test_directory);
  * @param labels the labels for each picture
  * @return picture vector, each picture is a tensor
  */
-vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
+vector<Tensor> load_MNIST(string &datapath, vector<int> &labels);
 
 /**
  * @brief load Lenet5 pretrain model
@@ -107,3 +107,4 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> & labels);
 Network load_Lenet_weights();
 
 #endif //TINYTENSOR_DATALOADER_HPP
+
