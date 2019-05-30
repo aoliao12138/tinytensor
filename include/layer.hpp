@@ -18,15 +18,15 @@ using namespace std;
 /**
  * @brief base type for layer configures
  */
-class Configure{
+class Configure {
 public:
-    virtual ~Configure()= default;
+    virtual ~Configure() = default;
 };
 
 /**
  * @brief Configures for a convolution layer
  */
-class ConvConfigure: public Configure{
+class ConvConfigure: public Configure {
 public:
     int _input;
     int _output;
@@ -51,7 +51,7 @@ public:
 /**
  * @brief Configures for a pool layer
  */
-class PoolConfigure: public Configure{
+class PoolConfigure: public Configure {
 public:
     int _kernel_size;
     int _stride;
@@ -68,7 +68,7 @@ public:
 /**
  * @brief Configures for a fully connected layer
  */
-class LinearConfigure: public Configure{
+class LinearConfigure: public Configure {
 public:
     int _input;
     int _output;
@@ -86,7 +86,7 @@ public:
 /**
  * @brief base class of different layers.
  */
-class Layer{
+class Layer {
 private:
     /**
      * name of the layer (like conv, linear, relu)
@@ -115,20 +115,20 @@ public:
      * @param c configure needed for the layer
      * @return base type pointer of layer
      */
-    static Layer * creator(int mode, Configure *c );
+    static Layer *creator(int mode, Configure *c );
 
     /**
      * @brief calculate the result of the layer
      * @param input output of the last layer
      * @return the input of next layer
      */
-    virtual Tensor calculate(Tensor & input)=0;
+    virtual Tensor calculate(Tensor &input)=0;
 };
 
 /**
  *@brief convolution layer
  */
-class Conv: public Layer{
+class Conv: public Layer {
     /**
      * store some parameters for convolution
      */
@@ -145,7 +145,7 @@ class Conv: public Layer{
      * @param _padding the amount of 0 for one side
      * @return the tensor that has been padded
      */
-    Tensor pad(Tensor& x,int _padding);
+    Tensor pad(Tensor &x,int _padding);
 
 public:
     /**
@@ -159,19 +159,19 @@ public:
      * @param input output of the last layer
      * @return the input of next layer
      */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 
     /**
      * @brief set the kernel of convolution directly
      * @param x convolution kernel
      */
-    void setkernel( vector<Tensor> & x);
+    void setkernel(vector<Tensor> &x);
 };
 
 /**
  * @brief maxpool layer
  */
-class MaxPool2d: public Layer{
+class MaxPool2d: public Layer {
     /**
      * parameters for pool
      */
@@ -189,13 +189,13 @@ public:
      * @param input output of the last layer
      * @return the input of next layer
      */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 };
 
 /**
  * @brief fully connected layer
  */
-class Linear: public Layer{
+class Linear: public Layer {
     /**
      * parameters for fully connected layer
      */
@@ -217,19 +217,19 @@ public:
     * @param input output of the last layer
     * @return the input of next layer
     */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 
     /**
      * @brief set the kernel of fully connnected layer directly
      * @param x weight for fully connnected layer
      */
-    void setkernel(vector<vector<vector<double> > > & x);
+    void setkernel(vector<vector<vector<double> > > &x);
 };
 
 /**
  * @brief layer for relu calculation
  */
-class Relu: public Layer{
+class Relu: public Layer {
 public:
     /**
      * @brief constructor.
@@ -241,13 +241,13 @@ public:
     * @param input output of the last layer
     * @return the input of next layer
     */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 };
 
 /**
  * @brief layer for sigmod calculation
  */
-class Sigmoid: public Layer{
+class Sigmoid: public Layer {
 public:
     /**
      * constructor
@@ -259,13 +259,13 @@ public:
    * @param input output of the last layer
    * @return the input of next layer
    */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 };
 
 /**
  * @brief layer for tanh calculation
  */
-class Tanh: public Layer{
+class Tanh: public Layer {
 public:
     /**
      * @brief constructor
@@ -277,13 +277,13 @@ public:
    * @param input output of the last layer
    * @return the input of next layer
    */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 };
 
 /**
  * @brief layer for softmax calculation
  */
-class Softmax: public Layer{
+class Softmax: public Layer {
 public:
     /**
      * @brief constructor
@@ -295,7 +295,7 @@ public:
    * @param input output of the last layer
    * @return the input of next layer
    */
-    Tensor calculate(Tensor & input);
+    Tensor calculate(Tensor &input);
 };
 
 
