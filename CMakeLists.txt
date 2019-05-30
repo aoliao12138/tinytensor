@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 
 PROJECT(tinytensor)
 SET(CMAKE_CXX_STANDARD 14)
@@ -17,7 +17,11 @@ if(OPENMP_FOUND)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp src/dataloader.cpp)
+
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O3 -msse2  -funroll-loops")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O3 -msse2  -funroll-loops")
+
+set( TINYTENSOR_SRC src/tensor.cpp src/network.cpp src/layer.cpp src/dataloader.cpp src/lap_timer.cpp)
 
 add_library( tinytensor_lib ${TINYTENSOR_SRC} )
 

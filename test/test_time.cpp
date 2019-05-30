@@ -1,7 +1,7 @@
 #include <vector>
 #include <tensor.hpp>
 #include <iostream>
-#include <ctime>
+#include "lap_timer.hpp"
 #include "dataloader.hpp"
 #include "network.hpp"
 #include "omp.h"
@@ -17,19 +17,26 @@ int main() {
 
     double correct = 0;
 
-    int num = 10000;
+    int num = 1000;
 
-    clock_t startTime = clock();
-    #pragma omp parallel for
+    swissknife::profiling::LapTimer timer;
+    swissknife::profiling::LapHandle lap1 = timer.addLap(std::string("MNIST"));
+    timer.start(lap1);
+
     for (int i = 0; i < num; ++i) {
         Tensor result = Lenet5.eval(images[i]);
         int predict_number = result.max_tensor_index();
         if (predict_number == labels[i]) {
-            correct ++;
+            correct++;
         }
     }
-    clock_t endTime = clock();
-    cout << "per image: "  << double(endTime - startTime) / CLOCKS_PER_SEC /num << "s" << endl;
+
+    timer.stop();
+
+    // report
+    timer.printSummary(num);
+
+    //cout << "per image: "  << double(endTime - startTime) / CLOCKS_PER_SEC /num << "s" << endl;
 
     cout << "Accuracy: " << correct / num << endl;
     return 0;
