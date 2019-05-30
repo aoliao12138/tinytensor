@@ -22,8 +22,8 @@ Tensor::Tensor(int x, int y, int z, double num):
 }
 
 int Tensor::max_tensor_index() {
-    double tmp=_kernel[0][0][0];
-    int index=0;
+    double tmp = _kernel[0][0][0];
+    int index = 0;
     for (int i = 0; i <_nz; ++i) {
         for (int j = 0; j < _ny; ++j) {
             for (int k = 0; k < _nx; ++k) {

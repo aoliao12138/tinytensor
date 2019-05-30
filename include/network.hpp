@@ -20,7 +20,7 @@ public:
      * @param l A concrete layer pointer inherit from Layer class
      */
     void add_layer(Layer *l) {
-      layers.push_back(l);
+      _layers.push_back(l);
     }
 
     /**
@@ -34,7 +34,7 @@ private:
     /**
      * A layer pointer vector to store different types of layers and dynamic change layers of the network.
      */
-    vector<Layer *> layers;
+    vector<Layer *> _layers;
 };
 
 

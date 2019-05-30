@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/test_mnist.dir/test/test_MNIST.cpp.o  -o test_mnist libtinytensor_lib.a 

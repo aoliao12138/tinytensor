@@ -44,7 +44,7 @@ public:
      * @param stride  controls the stride for the cross-correlation
      * @param padding controls the amount of zero-paddings of the image
      */
-    ConvConfigure(int input_channels, int output_channels,int kernel_size, vector<double> bias
+    ConvConfigure(int input_channels, int output_channels, int kernel_size, vector<double> bias
             , int stride=1, int padding=0);
 };
 
@@ -91,7 +91,7 @@ private:
     /**
      * name of the layer (like conv, linear, relu)
      */
-    string name;
+    string _name;
 
 public:
     /**
@@ -99,14 +99,14 @@ public:
      * @return the name of layer
      */
     string getName() {
-        return name;
+        return _name;
       }
     /**
      * @brief set the name of layer
      * @param name the name you want to call this layer
      */
     void setName(string name) {
-        this->name = name;
+        this->_name = name;
       }
 
     /**
@@ -115,7 +115,7 @@ public:
      * @param c configure needed for the layer
      * @return base type pointer of layer
      */
-    static Layer *creator(int mode, Configure *c );
+    static Layer *creator(int mode, Configure *c);
 
     /**
      * @brief calculate the result of the layer
@@ -137,7 +137,7 @@ class Conv: public Layer {
     /**
      * convolution kernel
      */
-    vector<Tensor> kernel;
+    vector<Tensor> _kernel;
 
     /**
      * @brief padding function for convolution
@@ -145,7 +145,7 @@ class Conv: public Layer {
      * @param _padding the amount of 0 for one side
      * @return the tensor that has been padded
      */
-    Tensor pad(Tensor &x,int _padding);
+    Tensor pad(Tensor &x, int _padding);
 
 public:
     /**
@@ -204,7 +204,7 @@ class Linear: public Layer {
     /**
      * weights for fully connected layer
      */
-    Tensor weights;
+    Tensor _weights;
 public:
     /**
      * @brief constructor

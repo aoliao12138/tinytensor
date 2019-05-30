@@ -49,12 +49,12 @@ Layer* Layer::creator(int mode, Configure *c) {
 Conv::Conv(ConvConfigure *confi): _confi(*confi) {
     setName("Conv");
     for (int i = 0; i < _confi._output ;++i) {
-        kernel.push_back(Tensor(_confi._kernel_size, _confi._kernel_size, _confi._input));
+        _kernel.push_back(Tensor(_confi._kernel_size, _confi._kernel_size, _confi._input));
     }
 }
 
 void Conv::setkernel(vector<Tensor> &x) {
-    kernel=x;
+    _kernel=x;
 }
 
 MaxPool2d::MaxPool2d(PoolConfigure *confi): _confi(*confi) {
@@ -64,12 +64,12 @@ MaxPool2d::MaxPool2d(PoolConfigure *confi): _confi(*confi) {
 Linear::Linear(LinearConfigure *confi): _confi(*confi) {
     setName("Linear");
     Tensor tmp (1, _confi._output, _confi._input);
-    weights = tmp;
+    _weights = tmp;
 }
 
 void Linear::setkernel(vector<vector<vector<double> > > &x) {
 
-    weights.set_kernel(x);
+    _weights.set_kernel(x);
 }
 
 Relu::Relu() {
@@ -99,10 +99,10 @@ Tensor Conv::calculate(Tensor &input) {
         for (int j = 0; j < result_ny; ++j) {
             for (int k = 0; k < result_nx; ++k) {
                 double tmp = _confi._bias[i];
-                for (int n = 0; n < kernel[i].get_nz(); ++n) {
-                    for (int l = 0; l < kernel[i].get_ny(); ++l) {
-                        for (int m = 0; m < kernel[i].get_nx(); ++m) {
-                            tmp += kernel[i]._kernel[n][l][m] *
+                for (int n = 0; n < _kernel[i].get_nz(); ++n) {
+                    for (int l = 0; l < _kernel[i].get_ny(); ++l) {
+                        for (int m = 0; m < _kernel[i].get_nx(); ++m) {
+                            tmp += _kernel[i]._kernel[n][l][m] *
                                    input._kernel[n][l + j * _confi._stride][m + k * _confi._stride];
                         }
                     }
@@ -173,7 +173,7 @@ Tensor Linear::calculate(Tensor &input) {
             for (int i = 0; i < tmpz; ++i) {
                 for (int j = 0; j < tmpy; ++j) {
                     for (int k = 0; k < tmpx; ++k) {
-                        result._kernel[0][0][l] += input._kernel[i][j][k] * weights._kernel[0][l][k + tmpx * j + tmpy * tmpx * i];
+                        result._kernel[0][0][l] += input._kernel[i][j][k] * _weights._kernel[0][l][k + tmpx * j + tmpy * tmpx * i];
                     }
                 }
             }
@@ -184,7 +184,7 @@ Tensor Linear::calculate(Tensor &input) {
         for (int i = 0; i < _confi._output; ++i) {
             result._kernel[0][0][i] = _confi._bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
-                result._kernel[0][0][i] += input._kernel[0][0][j] * weights._kernel[0][i][j];
+                result._kernel[0][0][i] += input._kernel[0][0][j] * _weights._kernel[0][i][j];
             }
         }
         return result;

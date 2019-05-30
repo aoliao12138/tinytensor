@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtinytensor_lib.a  CMakeFiles/tinytensor_lib.dir/src/tensor.cpp.o CMakeFiles/tinytensor_lib.dir/src/network.cpp.o CMakeFiles/tinytensor_lib.dir/src/layer.cpp.o CMakeFiles/tinytensor_lib.dir/src/dataloader.cpp.o
+/usr/bin/ranlib libtinytensor_lib.a
