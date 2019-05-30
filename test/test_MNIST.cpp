@@ -6,8 +6,7 @@
 
 using namespace std;
 
-int main(){
-
+int main() {
     string datapath = "../MNIST";
 
     vector<int> labels;
