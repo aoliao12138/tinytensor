@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/live_demo.dir/test/live_demo.cpp.o  -o live_demo libtinytensor_lib.a 

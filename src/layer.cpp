@@ -238,7 +238,6 @@ Tensor Softmax::calculate(Tensor &input) {
     #pragma omp parallel for
     for (int i = 0; i < input.get_nx(); ++i) {
         sum += exp(input._kernel[0][0][i]);
-
     }
     #pragma omp parallel for
     for (int j = 0; j < input.get_nx(); ++j) {

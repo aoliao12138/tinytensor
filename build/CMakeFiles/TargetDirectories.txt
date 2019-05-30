@@ -1,5 +1,0 @@
-/home/huzy/桌面/cpp/project/tinytensor/build/CMakeFiles/edit_cache.dir
-/home/huzy/桌面/cpp/project/tinytensor/build/CMakeFiles/tinytensor_lib.dir
-/home/huzy/桌面/cpp/project/tinytensor/build/CMakeFiles/test_mnist.dir
-/home/huzy/桌面/cpp/project/tinytensor/build/CMakeFiles/live_demo.dir
-/home/huzy/桌面/cpp/project/tinytensor/build/CMakeFiles/rebuild_cache.dir
