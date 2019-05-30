@@ -1,3 +1,4 @@
+#include "omp.h"
 #include "layer.hpp"
 #include <vector>
 #include <cmath>
@@ -89,6 +90,7 @@ Tensor Conv::calculate(Tensor &input) {
     if (_confi._padding!=0) {
         input=pad(input,_confi._padding);
     }
+    ////#pragma omp parallel for
     for (int i = 0; i < _confi._output; ++i) {
         for (int j = 0; j < result_ny; ++j) {
             for (int k = 0; k < result_nx; ++k) {
@@ -113,6 +115,7 @@ Tensor Conv::pad(Tensor &x, int _padding) {
     vector<vector<vector<double > > > result;
     for (int i = 0; i <x.get_nz() ; ++i) {
         vector<vector<double> > matrix;
+        ////#pragma omp parallel for
         for (int j = 0; j <x.get_ny()+2*_padding ; ++j) {
             if (j<_padding||j>=x.get_ny()+_padding){
                 vector<double> v(x.get_nx()+2*_padding,0);
@@ -140,7 +143,7 @@ Tensor MaxPool2d::calculate(Tensor &input) {
     int result_nx = input.get_nx() / 2;
     int result_ny = input.get_ny() / 2;
     Tensor result(result_nx,result_ny,input.get_nz(),0);
-
+    //#pragma omp parallel for
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <result_ny ; ++j) {
             for (int k = 0; k <result_nx ; ++k) {
@@ -160,6 +163,7 @@ Tensor Linear::calculate(Tensor &input) {
         int tmpx = input.get_nx();
         int tmpy = input.get_ny();
         int tmpz = input.get_nz();
+        //#pragma omp parallel for
         for (int l = 0; l < _confi._output; ++l) {
             result._kernel[0][0][l]=_confi._bias[l];
             for (int i = 0; i < tmpz; ++i) {
@@ -172,6 +176,7 @@ Tensor Linear::calculate(Tensor &input) {
         }
         return result;
     } else{
+        //#pragma omp parallel for
         for (int i = 0; i < _confi._output; ++i) {
             result._kernel[0][0][i]=_confi._bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
@@ -183,6 +188,7 @@ Tensor Linear::calculate(Tensor &input) {
 }
 
 Tensor Relu::calculate(Tensor &input) {
+    //#pragma omp parallel for
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <input.get_ny() ; ++j) {
             for (int k = 0; k <input.get_nx() ; ++k) {
@@ -194,6 +200,7 @@ Tensor Relu::calculate(Tensor &input) {
 }
 
 Tensor Sigmoid::calculate(Tensor &input) {
+    //#pragma omp parallel for
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <input.get_ny() ; ++j) {
             for (int k = 0; k <input.get_nx() ; ++k) {
@@ -205,6 +212,7 @@ Tensor Sigmoid::calculate(Tensor &input) {
 }
 
 Tensor Tanh::calculate(Tensor &input) {
+    //#pragma omp parallel for
     for (int i = 0; i <input.get_nz() ; ++i) {
         for (int j = 0; j <input.get_ny() ; ++j) {
             for (int k = 0; k <input.get_nx() ; ++k) {
@@ -219,9 +227,11 @@ Tensor Tanh::calculate(Tensor &input) {
 Tensor Softmax::calculate(Tensor &input) {
     //1 dimensional
     double sum=0;
+    //#pragma omp parallel for
     for (int i = 0; i <input.get_nx() ; ++i) {
         sum+=exp(input._kernel[0][0][i]);
     }
+    //#pragma omp parallel for
     for (int j = 0; j <input.get_nx() ; ++j) {
         input._kernel[0][0][j]=exp(input._kernel[0][0][j])/sum;
     }
