@@ -5,17 +5,17 @@
 
 using namespace std;
 
-ConvConfigure::ConvConfigure(int input_channels, int output_channels, int kernel_size, vector<double> bias, int stride,
+ConvConfigure::ConvConfigure(int input_channels, int output_channels, int kernel_size,  int stride,
                              int padding): _input(input_channels), _output(output_channels),
-                             _kernel_size(kernel_size), _stride(stride), _padding(padding), _bias(bias){
+                             _kernel_size(kernel_size), _stride(stride), _padding(padding){
 }
 
 PoolConfigure::PoolConfigure(int kernel_size, int stride, int padding): _kernel_size(kernel_size),
                             _stride(stride), _padding(padding){
 }
 
-LinearConfigure::LinearConfigure(int input_features, int output_features, vector<double> bias):
-                            _input(input_features), _output(output_features), _bias(bias){
+LinearConfigure::LinearConfigure(int input_features, int output_features):
+                            _input(input_features), _output(output_features){
 }
 
 Layer* Layer::creator(int mode, Configure *c) {
@@ -100,7 +100,7 @@ Tensor Conv::calculate(Tensor &input) {
     for (int i = 0; i < _confi._output; ++i) {
         for (int j = 0; j < result_ny; ++j) {
             for (int k = 0; k < result_nx; ++k) {
-                double tmp = _confi._bias[i];
+                double tmp =_bias[i];
                 for (int n = 0; n < _kernel[i].get_nz(); ++n) {
                     for (int l = 0; l < _kernel[i].get_ny(); ++l) {
                         for (int m = 0; m < _kernel[i].get_nx(); ++m) {
@@ -172,7 +172,7 @@ Tensor Linear::calculate(Tensor &input) {
         int tmpz = input.get_nz();
         #pragma omp parallel for
         for (int l = 0; l < _confi._output; ++l) {
-            result._kernel[0][0][l] = _confi._bias[l];
+            result._kernel[0][0][l] = _bias[l];
             for (int i = 0; i < tmpz; ++i) {
                 for (int j = 0; j < tmpy; ++j) {
                     for (int k = 0; k < tmpx; ++k) {
@@ -186,7 +186,7 @@ Tensor Linear::calculate(Tensor &input) {
     else{
         #pragma omp parallel for
         for (int i = 0; i < _confi._output; ++i) {
-            result._kernel[0][0][i] = _confi._bias[i];
+            result._kernel[0][0][i] = _bias[i];
             for (int j = 0; j < input.get_nx(); ++j) {
                 result._kernel[0][0][i] += input._kernel[0][0][j] * _weights._kernel[0][i][j];
             }

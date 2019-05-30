@@ -130,83 +130,85 @@ vector<Tensor> load_MNIST(string & datapath, vector<int> &labels) {
 
 // Create a Network, load all weight into it and return.
 Network load_Lenet_weights() {
-    Network net;
-
-    ConvConfigure c1(1, 6, 5, parameters_2, 1, 2);
-    Layer *L1 = Layer::creator(CONV, &c1);
-    Conv *conv1 = dynamic_cast<Conv *>(L1);
-    vector<Tensor> k1;
-    for (int i = 0; i <parameters_1.size(); ++i) {
-        Tensor tmp=Tensor(5, 5, 1);
-        tmp.set_kernel(parameters_1[i]);
-        k1.push_back(tmp);
-    }
-    conv1->setkernel(k1);
-    net.add_layer(L1);
-
-    Layer *L2 = Layer::creator(RELU, nullptr);
-    net.add_layer(L2);
-
-    PoolConfigure p1(2, 2);
-
-    Layer *L3 = Layer::creator(POOL, &p1);
-    net.add_layer(L3);
-
-    ConvConfigure c2(6, 16, 5, parameters_4);
-    Layer *L4 = Layer::creator(CONV, &c2);
-
-    Conv *conv2=dynamic_cast<Conv *>(L4);
-    vector<Tensor> k4;
-    for (int i = 0; i <parameters_3.size(); ++i) {
-        Tensor tmp = Tensor(5, 5, 6);
-        tmp.set_kernel(parameters_3[i]);
-        k4.push_back(tmp);
-    }
-    conv2->setkernel(k4);
-
-    net.add_layer(L4);
-
-    Layer *L5 = Layer::creator(RELU, nullptr);
-    net.add_layer(L5);
-
-    PoolConfigure p2(2, 2);
-
-    Layer *L6 = Layer::creator(POOL, &p2);
-    net.add_layer(L6);
-
-    LinearConfigure l1(16*5*5, 120, parameters_6);
-
-    Layer *L7 = Layer::creator(LINEAR, &l1);
-
-    Linear *line1 = dynamic_cast<Linear*>(L7);
-    line1->setkernel(parameters_5);
-
-    net.add_layer(L7);
-
-    Layer *L8 = Layer::creator(RELU, nullptr);
-    net.add_layer(L8);
-
-    LinearConfigure l2(120, 84, parameters_8);
-
-    Layer *L9 = Layer::creator(LINEAR, &l2);
-
-    Linear *line2= dynamic_cast<Linear*>(L9);
-    line2->setkernel(parameters_7);
-
-    net.add_layer(L9);
-
-    Layer *L10 = Layer::creator(RELU, nullptr);
-    net.add_layer(L10);
-
-    LinearConfigure l3(84, 10, parameters_10);
-
-    Layer *L11 = Layer::creator(LINEAR, &l3);
-
-    Linear *line3 = dynamic_cast<Linear*>(L11);
-    line3->setkernel(parameters_9);
-
-    net.add_layer(L11);
-
-    return net;
+//    Network net;
+//
+//    ConvConfigure c1(1, 6, 5, 1, 2);
+//    Layer *L1 = Layer::creator(CONV, &c1);
+//    Conv *conv1 = dynamic_cast<Conv *>(L1);
+//    vector<Tensor> k1;
+//    conv1->setbias(parameters_2);
+//    for (int i = 0; i <parameters_1.size(); ++i) {
+//        Tensor tmp=Tensor(5, 5, 1);
+//        tmp.set_kernel(parameters_1[i]);
+//        k1.push_back(tmp);
+//    }
+//    conv1->setkernel(k1);
+//    net.add_layer(L1);
+//
+//    Layer *L2 = Layer::creator(RELU, nullptr);
+//    net.add_layer(L2);
+//
+//    PoolConfigure p1(2, 2);
+//
+//    Layer *L3 = Layer::creator(POOL, &p1);
+//    net.add_layer(L3);
+//
+//    ConvConfigure c2(6, 16, 5);
+//    Layer *L4 = Layer::creator(CONV, &c2);
+//
+//    Conv *conv2=dynamic_cast<Conv *>(L4);
+//    vector<Tensor> k4;
+//    conv2->setbias(parameters_4);
+//    for (int i = 0; i <parameters_3.size(); ++i) {
+//        Tensor tmp = Tensor(5, 5, 6);
+//        tmp.set_kernel(parameters_3[i]);
+//        k4.push_back(tmp);
+//    }
+//    conv2->setkernel(k4);
+//
+//    net.add_layer(L4);
+//
+//    Layer *L5 = Layer::creator(RELU, nullptr);
+//    net.add_layer(L5);
+//
+//    PoolConfigure p2(2, 2);
+//
+//    Layer *L6 = Layer::creator(POOL, &p2);
+//    net.add_layer(L6);
+//
+//    LinearConfigure l1(16*5*5, 120, parameters_6);
+//
+//    Layer *L7 = Layer::creator(LINEAR, &l1);
+//
+//    Linear *line1 = dynamic_cast<Linear*>(L7);
+//    line1->setkernel(parameters_5);
+//
+//    net.add_layer(L7);
+//
+//    Layer *L8 = Layer::creator(RELU, nullptr);
+//    net.add_layer(L8);
+//
+//    LinearConfigure l2(120, 84, parameters_8);
+//
+//    Layer *L9 = Layer::creator(LINEAR, &l2);
+//
+//    Linear *line2= dynamic_cast<Linear*>(L9);
+//    line2->setkernel(parameters_7);
+//
+//    net.add_layer(L9);
+//
+//    Layer *L10 = Layer::creator(RELU, nullptr);
+//    net.add_layer(L10);
+//
+//    LinearConfigure l3(84, 10, parameters_10);
+//
+//    Layer *L11 = Layer::creator(LINEAR, &l3);
+//
+//    Linear *line3 = dynamic_cast<Linear*>(L11);
+//    line3->setkernel(parameters_9);
+//
+//    net.add_layer(L11);
+//
+//    return net;
 }
 

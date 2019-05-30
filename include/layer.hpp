@@ -33,18 +33,16 @@ public:
     int _kernel_size;
     int _stride;
     int _padding;
-    vector<double> _bias;
 
     /**
      * @brief Constructor.
      * @param input_channels input channels of convolution layer
      * @param output_channels output channels of convolution layer
      * @param kernel_size kernel size of the convolution
-     * @param bias bias of each output channel
      * @param stride  controls the stride for the cross-correlation
      * @param padding controls the amount of zero-paddings of the image
      */
-    ConvConfigure(int input_channels, int output_channels, int kernel_size, vector<double> bias
+    ConvConfigure(int input_channels, int output_channels, int kernel_size
             , int stride=1, int padding=0);
 };
 
@@ -72,14 +70,12 @@ class LinearConfigure: public Configure {
 public:
     int _input;
     int _output;
-    vector<double> _bias;
     /**
      * @brief Constructor.
      * @param input_features input features of a fully connected layer
      * @param output_features output features of a fully connected layer
-     * @param bias bias of each output feature
      */
-    LinearConfigure(int input_features, int output_features, vector<double> bias);
+    LinearConfigure(int input_features, int output_features);
 };
 
 
@@ -134,10 +130,17 @@ class Conv: public Layer {
      */
     ConvConfigure _confi;
 
+    Tensor error;
+    Tensor result;
+
+    vector<double> _bias;
+    vector<double> _dbias;
+
     /**
      * convolution kernel
      */
     vector<Tensor> _kernel;
+    vector<Tensor> _dkernel;
 
     /**
      * @brief padding function for convolution
@@ -160,7 +163,9 @@ public:
      * @return the input of next layer
      */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 
+    void setbias(vector<double> bias);
     /**
      * @brief set the kernel of convolution directly
      * @param x convolution kernel
@@ -190,6 +195,7 @@ public:
      * @return the input of next layer
      */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 };
 
 /**
@@ -201,6 +207,7 @@ class Linear: public Layer {
      */
     LinearConfigure _confi;
 
+    vector<double> _bias;
     /**
      * weights for fully connected layer
      */
@@ -219,6 +226,7 @@ public:
     */
     Tensor calculate(Tensor &input);
 
+    void setbias(vector<double> bias);
     /**
      * @brief set the kernel of fully connnected layer directly
      * @param x weight for fully connnected layer
