@@ -36,6 +36,7 @@ Layer* Layer::creator(int mode, Configure *c) {
     }else if (mode == 6){
         return new Softmax();
     }
+    return nullptr;
 }
 
 
