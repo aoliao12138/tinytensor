@@ -1,23 +1,120 @@
 \hypertarget{classMNISTData}{}\doxysection{M\+N\+I\+S\+T\+Data Class Reference}
 \label{classMNISTData}\index{MNISTData@{MNISTData}}
+
+
+the encapsulation of M\+N\+I\+ST Data  
+
+
+
+
+{\ttfamily \#include $<$dataloader.\+hpp$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classMNISTData_a4ff4019ad169378848f7dea4668239b5}{M\+N\+I\+S\+T\+Data}} (F\+I\+LE $\ast$images, F\+I\+LE $\ast$labels)
+\begin{DoxyCompactList}\small\item\em the constructor of \mbox{\hyperlink{classMNISTData}{M\+N\+I\+S\+T\+Data}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMNISTData_acd3b3d5fc5b9ea3355d802aced7028fa}\label{classMNISTData_acd3b3d5fc5b9ea3355d802aced7028fa}} 
+\mbox{\hyperlink{classMNISTData_acd3b3d5fc5b9ea3355d802aced7028fa}{$\sim$\+M\+N\+I\+S\+T\+Data}} ()
+\begin{DoxyCompactList}\small\item\em deconstructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMNISTData_aa904b253865d8b75b84ed65694fad0da}{show}} (int index)
+\begin{DoxyCompactList}\small\item\em print the selected image on screeen \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTensor}{Tensor}} \mbox{\hyperlink{classMNISTData_a7c427c48461fff117180ff3f6c89ce64}{operator\mbox{[}$\,$\mbox{]}}} (int index)
+\begin{DoxyCompactList}\small\item\em selected the wanted image \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMNISTData_a087086e85802093365784084d999f859}{label}} (int index)
+\begin{DoxyCompactList}\small\item\em get the label of certained image \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMNISTData_a56e194e3291c40cca9d13b2f95e98a73}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em get the size of the \mbox{\hyperlink{classMNISTData}{M\+N\+I\+S\+T\+Data}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+the encapsulation of M\+N\+I\+ST Data 
+
+\doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classMNISTData_a4ff4019ad169378848f7dea4668239b5}\label{classMNISTData_a4ff4019ad169378848f7dea4668239b5}} 
-{\bfseries M\+N\+I\+S\+T\+Data} (F\+I\+LE $\ast$images, F\+I\+LE $\ast$labels)
-\item 
-\mbox{\Hypertarget{classMNISTData_aa904b253865d8b75b84ed65694fad0da}\label{classMNISTData_aa904b253865d8b75b84ed65694fad0da}} 
-void {\bfseries show} (int index)
-\item 
-\mbox{\Hypertarget{classMNISTData_a7c427c48461fff117180ff3f6c89ce64}\label{classMNISTData_a7c427c48461fff117180ff3f6c89ce64}} 
-\mbox{\hyperlink{classTensor}{Tensor}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index)
-\item 
-\mbox{\Hypertarget{classMNISTData_a087086e85802093365784084d999f859}\label{classMNISTData_a087086e85802093365784084d999f859}} 
-int {\bfseries label} (int index)
-\item 
+\index{MNISTData@{MNISTData}!MNISTData@{MNISTData}}
+\index{MNISTData@{MNISTData}!MNISTData@{MNISTData}}
+\doxysubsubsection{\texorpdfstring{MNISTData()}{MNISTData()}}
+{\footnotesize\ttfamily M\+N\+I\+S\+T\+Data\+::\+M\+N\+I\+S\+T\+Data (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{images,  }\item[{F\+I\+LE $\ast$}]{labels }\end{DoxyParamCaption})}
+
+
+
+the constructor of \mbox{\hyperlink{classMNISTData}{M\+N\+I\+S\+T\+Data}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em images} & the compressed images \\
+\hline
+{\em labels} & the compressed labels \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classMNISTData_a56e194e3291c40cca9d13b2f95e98a73}\label{classMNISTData_a56e194e3291c40cca9d13b2f95e98a73}} 
-int {\bfseries get\+Size} ()
-\end{DoxyCompactItemize}
+\index{MNISTData@{MNISTData}!getSize@{getSize}}
+\index{getSize@{getSize}!MNISTData@{MNISTData}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int M\+N\+I\+S\+T\+Data\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the size of the \mbox{\hyperlink{classMNISTData}{M\+N\+I\+S\+T\+Data}} 
+
+\begin{DoxyReturn}{Returns}
+number of images in the \mbox{\hyperlink{classMNISTData}{M\+N\+I\+S\+T\+Data}} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMNISTData_a087086e85802093365784084d999f859}\label{classMNISTData_a087086e85802093365784084d999f859}} 
+\index{MNISTData@{MNISTData}!label@{label}}
+\index{label@{label}!MNISTData@{MNISTData}}
+\doxysubsubsection{\texorpdfstring{label()}{label()}}
+{\footnotesize\ttfamily int M\+N\+I\+S\+T\+Data\+::label (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+get the label of certained image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the wanted image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the label of the wanted image 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMNISTData_a7c427c48461fff117180ff3f6c89ce64}\label{classMNISTData_a7c427c48461fff117180ff3f6c89ce64}} 
+\index{MNISTData@{MNISTData}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!MNISTData@{MNISTData}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTensor}{Tensor}} M\+N\+I\+S\+T\+Data\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+selected the wanted image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the wanted image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a tensor contained the wanted image 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMNISTData_aa904b253865d8b75b84ed65694fad0da}\label{classMNISTData_aa904b253865d8b75b84ed65694fad0da}} 
+\index{MNISTData@{MNISTData}!show@{show}}
+\index{show@{show}!MNISTData@{MNISTData}}
+\doxysubsubsection{\texorpdfstring{show()}{show()}}
+{\footnotesize\ttfamily void M\+N\+I\+S\+T\+Data\+::show (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+print the selected image on screeen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index of the wanted image \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
