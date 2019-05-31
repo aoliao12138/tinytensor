@@ -207,11 +207,16 @@ class Linear: public Layer {
      */
     LinearConfigure _confi;
 
+    Tensor error;
+    Tensor result;
+
     vector<double> _bias;
+    vector<double> _dbias;
     /**
      * weights for fully connected layer
      */
     Tensor _weights;
+    Tensor _dweights;
 public:
     /**
      * @brief constructor
@@ -250,6 +255,7 @@ public:
     * @return the input of next layer
     */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 };
 
 /**
@@ -268,6 +274,7 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 };
 
 /**
@@ -286,6 +293,7 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 };
 
 /**
@@ -304,6 +312,7 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
+    Tensor bprop(Layer * prev);
 };
 
 

@@ -33,7 +33,7 @@ public:
     Tensor eval(Tensor &input); //run the network, iteratively use calculate function in the layer
     void train(vector<Tensor> images, double learing_rate,int batch_size);
     void fprop();
-    void bprop(vector<int> label,std::function<double(double,double) > loss=[](double y, double t){return (y - t) * (y - t) / 2;}); //maybe classification
+    void bprop(vector<int> label,std::function<double(double,double) > loss=[](double y, double t){return (y - t) * (y - t) / 2;});
     void reset_weights();
     void update_weights(double learning_rate);
 
