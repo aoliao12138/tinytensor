@@ -5,6 +5,10 @@
 
 using namespace std;
 
+double gradient_descent(double W, double dW, double alpha, double lambda) {
+    return W - alpha * (dW + lambda * W);
+}
+
 ConvConfigure::ConvConfigure(int input_channels, int output_channels, int kernel_size,  int stride,
                              int padding): _input(input_channels), _output(output_channels),
                              _kernel_size(kernel_size), _stride(stride), _padding(padding){
@@ -245,3 +249,64 @@ Tensor Softmax::calculate(Tensor &input) {
     }
     return input;
 }
+
+void Conv::bprop(Layer *prev) {
+    //delta
+
+}
+
+void MaxPool2d::bprop(Layer *prev) { //max be max, others be 0
+
+    #pragma omp parallel for
+    for (int i = 0; i < prev->result.get_nz(); ++i) {
+        for (int j = 0; j < prev->result.get_ny(); ++j) {
+            for (int k = 0; k < prev->result.get_nx(); ++k) {
+                if (prev->result._kernel[i][j][k]==result._kernel[i][j/2][k/2]){
+                    prev->error._kernel[i][j][k]=error._kernel[i][j/2][k/2];
+                }else{
+                    prev->error._kernel[i][j][k]=0;
+                }
+            }
+        }
+    }
+}
+
+void Linear::bprop(Layer *prev) {
+    if (prev->result.get_nx()==1 && prev->result.get_ny()==1){ //linear
+        int output_dim=prev->result.get_nx();
+        for (int i = 0; i <output_dim ; ++i) {
+            prev->error._kernel[0][0][i]=0;
+            for (int j = 0; j <_confi._output ; ++j) {
+                prev->error._kernel[0][0][i]+=error._kernel[0][0][j]*_weights._kernel[0][i][j];
+            }
+        }
+        //update delta w
+        for (int i = 0; i <output_dim ; ++i) {
+            for (int j = 0; j <_confi._output ; ++j) {
+                _dweights._kernel[0][i][j]+=error._kernel[0][0][j]*prev->result._kernel[0][0][i];
+
+            }
+        }
+        //update delta bias
+        for (int k = 0; k <_bias.size() ; ++k) {
+            _dbias[k]+=error._kernel[0][0][k];
+        }
+    }
+
+}
+
+void Relu::bprop(Layer *prev) {
+#pragma omp parallel for
+    for (int i = 0; i < error.get_nz(); ++i) {
+        for (int j = 0; j < error.get_ny(); ++j) {
+            for (int k = 0; k < error.get_nx(); ++k) {
+                if (result._kernel[i][j][k]==0){
+                    prev->error._kernel[i][j][k]=0;
+                }else{
+                    prev->error._kernel[i][j][k]=result._kernel[i][j][k];
+                }
+            }
+        }
+    }
+}
+

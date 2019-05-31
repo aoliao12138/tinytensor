@@ -90,6 +90,8 @@ private:
     string _name;
 
 public:
+    Tensor error;
+    Tensor result;
     /**
      * @brief get the name of layer
      * @return the name of layer
@@ -118,7 +120,10 @@ public:
      * @param input output of the last layer
      * @return the input of next layer
      */
+    virtual reset_dweights()=0;
+    virtual update_dweights(double learning_rate)=0;
     virtual Tensor calculate(Tensor &input)=0;
+    virtual void bprop(Layer * prev)=0;
 };
 
 /**
@@ -130,8 +135,7 @@ class Conv: public Layer {
      */
     ConvConfigure _confi;
 
-    Tensor error;
-    Tensor result;
+    
 
     vector<double> _bias;
     vector<double> _dbias;
@@ -163,7 +167,7 @@ public:
      * @return the input of next layer
      */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
 
     void setbias(vector<double> bias);
     /**
@@ -171,6 +175,7 @@ public:
      * @param x convolution kernel
      */
     void setkernel(vector<Tensor> &x);
+    void resetweight();
 };
 
 /**
@@ -195,7 +200,8 @@ public:
      * @return the input of next layer
      */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
+    void resetweight();
 };
 
 /**
@@ -206,9 +212,6 @@ class Linear: public Layer {
      * parameters for fully connected layer
      */
     LinearConfigure _confi;
-
-    Tensor error;
-    Tensor result;
 
     vector<double> _bias;
     vector<double> _dbias;
@@ -237,6 +240,8 @@ public:
      * @param x weight for fully connnected layer
      */
     void setkernel(vector<vector<vector<double> > > &x);
+    void bprop(Layer * prev);
+    void resetweight();
 };
 
 /**
@@ -255,7 +260,8 @@ public:
     * @return the input of next layer
     */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
+    void resetweight();
 };
 
 /**
@@ -274,7 +280,8 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
+    void resetweight();
 };
 
 /**
@@ -293,7 +300,8 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
+    void resetweight();
 };
 
 /**
@@ -312,8 +320,8 @@ public:
    * @return the input of next layer
    */
     Tensor calculate(Tensor &input);
-    Tensor bprop(Layer * prev);
+    void bprop(Layer * prev);
+    void resetweight();
 };
-
 
 #endif //TINYTENSOR_LAYER_HPP
